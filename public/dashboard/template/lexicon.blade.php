@@ -1,42 +1,6 @@
-<?php include 'assets/variables.php'; ?>
+@extends('master')
 
-<!DOCTYPE html>
-<html>
-<head>
-@include("dashboard.template.includes.meta")
-</head>
-<body class="hold-transition sidebar-mini sidebar-collapse">
-<!-- Site wrapper -->
-<div class="wrapper">
-  <!-- Navbar -->
-  @include("dashboard.template.includes.navbar")
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  @include("dashboard.template.includes.sidebar")
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Edit Lexicon</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/index2.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">Edit Lexicon</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-<!-- START MAIN CONTENT -->
-    <section class="content">
-		
+@section("content")
 	  <div class="row">
                 <nav aria-label="alphabet">
                   <ul class="pagination justify-content-center">
@@ -312,22 +276,5 @@
 		  * empty fields should show different color<br>
 		  * other headwords should collapse when another is selected (only one open at a time)</p>
 	  </div>
-    </section>
-<!-- END MAIN CONTENT -->
-
-  </div>
-  <!-- /.content-wrapper -->
-
-  @include("dashboard.template.includes.footer")
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-@include("dashboard.template.includes.footerscripts")
-
-</body>
-</html>
+    
+@endsection
