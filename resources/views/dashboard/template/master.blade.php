@@ -8,7 +8,8 @@
 <div class="wrapper">
 
 @include("dashboard.template.includes.sidebar")
-@include("dashboard.template.includes.sidebar")
+
+@include("dashboard.template.includes.navbar")
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -20,6 +21,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+          <!-- Yield your content here. --> 
           @yield("content")
       </div><!-- /.container-fluid -->
     </section>
