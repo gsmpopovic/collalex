@@ -6,10 +6,9 @@
 <body class="hold-transition sidebar-mini sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
-  <!-- Navbar -->
-  @include("dashboard.template.includes.navbar")
-  @include("dashboard.template.includes.sidebar")
 
+@include("dashboard.template.includes.sidebar")
+@include("dashboard.template.includes.sidebar")
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

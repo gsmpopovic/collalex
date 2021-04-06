@@ -1,4 +1,4 @@
-@extends("includes.master")
+@extends("dashboard.template.master")
 @section("content")
 	  <div class="row">
                 <nav aria-label="alphabet">
