@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="index.php" class="nav-link">
+            <a href="/collalex_dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -34,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="lexicon.php" class="nav-link">
+            <a href="collalex_dashboard/lexicon" class="nav-link">
               <i class="nav-icon fas fa-book-open"></i>
               <p>
                 Lexicon

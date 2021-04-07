@@ -3,11 +3,11 @@
             <h1><a href="/">Bantayanon Language Project</a></h1>
             <nav class="links">
                 <ul>
-                    <li><a href="/?page=about">About</a></li>
-                    <li><a href="/?page=language">The Bantayanon Language</a></li>
-                    <li><a href="/?page=facesvoices">Faces & Voices</a></li>
-                    <li><a href="/dictionary">Dictionary</a></li>
-                    <li><a href="/?page=contribute">Contribute</a></li>
+                    <li><a href="{{route('about')}}">About</a></li>
+                    <li><a href="{{route('language')}}">The Bantayanon Language</a></li>
+                    <li><a href="{{route('facesandvoices')}}">Faces & Voices</a></li>
+                    <li><a href="{{route('dictionary')}}">Dictionary</a></li>
+                    <li><a href="{{route('contribute')}}">Contribute</a></li>
                 </ul>
             </nav>
             <nav class="main">
@@ -39,27 +39,27 @@
             <section>
                 <ul class="links">
                     <li>
-                        <a href="?page=about">
+                        <a href="{{route('about')}}">
                             <h3>About</h3>
                         </a>
                     </li>
                     <li>
-                        <a href="?page=language">
+                        <a href="{{route('language')}}">
                             <h3>The Bantayanon Language</h3>
                         </a>
                     </li>
                     <li>
-                        <a href="?page=facesvoices">
+                        <a href="{{route('facesandvoices')}}">
                             <h3>Faces & Voices</h3>
                         </a>
                     </li>
                     <li>
-                        <a href="dictionary">
+                        <a href="{{route('dictionary')}}">
                             <h3>Dictionary</h3>
                         </a>
                     </li>
                     <li>
-                        <a href="?page=contribute">
+                        <a href="{{route('contribute')}}">
                             <h3>Contribute</h3>
                         </a>
                     </li>

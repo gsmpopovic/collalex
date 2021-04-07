@@ -2,6 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
+// use App\Http\Controllers; 
+use App\Http\Controllers\WelcomeController; 
+use App\Http\Controllers\ContributeController; 
+use App\Http\Controllers\AboutController; 
+use App\Http\Controllers\DictionaryController;
+
+use App\Http\Controllers\DashboardController; 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +27,25 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('dictionary.template.dictionary');
-});
+Route::get("/", [WelcomeController::class, "index"]);
+Route::get("/about", [AboutController::class, "index"])->name("about");
+Route::get("/contribute", [ContributeController::class, "index"])->name("contribute");
+Route::get("/suggest", [SuggestionController::class, "index"])->name("suggest");
+Route::get("/facesandvoices", [FVController::class, "index"])->name("facesandvoices");
+Route::get("/language", [LanController::class, "index"])->name("language");
+
+
+
+Route::get("/dictionary", [DictionaryController::class, "index"])->name("dictionary");
+
+// Dashboard routes 
+
+Route::get("/cdash", [DashboardController::class, "index"])->name("dash");
+Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon");
+
+
+
+
+
+
+
