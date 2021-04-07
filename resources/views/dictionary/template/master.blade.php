@@ -19,19 +19,18 @@
         
         <!-- Main -->
         <div id="main">
-
-
             <article class="post">
                 @yield("content")
             </article>
         </div>
 
         <!-- Sidebar -->
+
         @include("dictionary.template.includes.sidebar")
 
     </div>
 
     @include("dictionary.template.includes.footerscripts")
-</body>
 
+</body>
 </html>

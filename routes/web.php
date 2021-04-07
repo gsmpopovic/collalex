@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('dictionary.template.welcome');
+    return view('dictionary.template.dictionary');
 });
