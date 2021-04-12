@@ -51,3 +51,7 @@ Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lex
 
 // RBAC managed by Laratrust; see vendor package Laratrust.
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
