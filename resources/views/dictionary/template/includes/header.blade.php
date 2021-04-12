@@ -69,7 +69,7 @@
             <!-- Actions -->
             <section>
                 <ul class="actions vertical">
-                    <li><a href="_management" class="button big fit">Log In</a></li>
+                    <li><a href="{{ route('login') }}" class="button big fit">Log In</a></li>
                 </ul>
             </section>
 

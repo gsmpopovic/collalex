@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Laratrust\Traits\LaratrustUserTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
@@ -24,7 +25,7 @@ use Laratrust\Traits\LaratrustUserTrait;
  *
  * @package App\Models
  */
-class User extends Model
+class User extends Authenticatable
 {
 	use LaratrustUserTrait;
 	protected $table = 'users';

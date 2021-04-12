@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends("dictionary.template.master")
 
 @section('content')
 <div class="container">
