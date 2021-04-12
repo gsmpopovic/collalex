@@ -268,7 +268,7 @@ return [
         | Turn this value to false if you don't want to use Laratrust admin panel
         |
         */
-        'register' => false,
+        'register' => true,
 
         /*
         |--------------------------------------------------------------------------
@@ -279,7 +279,9 @@ return [
         | will be accessible from.
         |
         */
-        'path' => 'laratrust',
+        // 'path' => 'laratrust',
+        'path' => 'cdash/management/rbac',
+
 
         /*
         |--------------------------------------------------------------------------
@@ -289,7 +291,7 @@ return [
         | The route where the go back link should point
         |
         */
-        'go_back_route' => '/',
+        'go_back_route' => '/cdash',
 
         /*
         |--------------------------------------------------------------------------

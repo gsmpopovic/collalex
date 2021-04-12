@@ -9,7 +9,7 @@ class LanController extends Controller
     //
     public function index(){
         
-        return view("dictionary.template.BantLang");
+        return view("dictionary.template.about-language");
 
     }
 }

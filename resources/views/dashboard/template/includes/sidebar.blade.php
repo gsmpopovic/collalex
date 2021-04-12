@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/collalex_dashboard" class="nav-link">
+            <a href="{{route('dash')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -34,7 +34,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="collalex_dashboard/lexicon" class="nav-link">
+            <a href="{{route('lexicon')}}" class="nav-link">
               <i class="nav-icon fas fa-book-open"></i>
               <p>
                 Lexicon
@@ -44,10 +44,18 @@
 			
           <li class="nav-header">MANAGEMENT</li>
           <li class="nav-item">
-            <a href="users.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-address-book"></i>
               <p>
                 Project Users
+              </p>
+            </a>  
+          </li>
+          <li class="nav-item">          
+            <a href="cdash/management/rbac" class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
+              <p>
+                RBAC Panel
               </p>
             </a>
           </li>
