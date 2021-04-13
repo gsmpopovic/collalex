@@ -52,4 +52,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
 Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
 
-// RBAC managed by Laratrust; see vendor package Laratrust.
+// RBAC managed by Laratrust; edited from vendor package Laratrust.
+
+
+Route::resource('/permissions', 'PermissionsController', ['as' => 'laratrust'])
+    ->only(['index', 'edit', 'update'])->middleware('role:admin');
+
+Route::resource('/roles', 'RolesController', ['as' => 'laratrust'])->middleware('role:admin');
+
+Route::resource('/roles-assignment', 'RolesAssignmentController', ['as' => 'laratrust'])
+    ->only(['index', 'edit', 'update'])->middleware('role:admin');
