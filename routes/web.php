@@ -45,11 +45,11 @@ Route::get("/dictionary", [DictionaryController::class, "index"])->name("diction
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 // Dashboard routes 
 
-Route::get("/cdash", [DashboardController::class, "index"])->name("dash");
-Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon");
+Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
+Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
 
 // RBAC managed by Laratrust; see vendor package Laratrust.
