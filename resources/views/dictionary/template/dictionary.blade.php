@@ -59,7 +59,7 @@
     <!-- About -->
     <section class="blurb">
         <h2>SEARCH BANTAYANON WORD:</h2>
-        <form method="get" action="index.php">
+        <form method="get" action="{{route('querypubdict')}}">
             <input type="hidden" value="display" name="action" />
             <div class="row uniform">
                 <div>

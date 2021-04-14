@@ -3,21 +3,21 @@
             <h1><a href="/">Bantayanon Language Project</a></h1>
             <nav class="links">
                 <ul>
-                    <li><a href="{{route('about')}}">About</a></li>
+                    {{-- <li><a href="{{route('about')}}">About</a></li>
                     <li><a href="{{route('language')}}">The Bantayanon Language</a></li>
-                    <li><a href="{{route('facesandvoices')}}">Faces & Voices</a></li>
+                    <li><a href="{{route('facesandvoices')}}">Faces & Voices</a></li> --}}
                     <li><a href="{{route('dictionary')}}">Dictionary</a></li>
-                    <li><a href="{{route('contribute')}}">Contribute</a></li>
+                    {{-- <li><a href="{{route('contribute')}}">Contribute</a></li> --}}
                 </ul>
             </nav>
             <nav class="main">
                 <ul>
-                    <li class="search">
+                    {{-- <li class="search">
                         <a class="fa-search" href="#search">Search</a>
                         <form id="search" method="get" action="#">
                             <input type="text" name="query" placeholder="Search" />
                         </form>
-                    </li>
+                    </li> --}}
                     <li class="menu">
                         <a class="fa-bars" href="#menu">Menu</a>
                     </li>
@@ -29,16 +29,16 @@
         <section id="menu">
 
             <!-- Search -->
-            <section>
+            {{-- <section>
                 <form class="search" method="get" action="#">
                     <input type="text" name="query" placeholder="Search" />
                 </form>
-            </section>
+            </section> --}}
 
             <!-- Links -->
             <section>
                 <ul class="links">
-                    <li>
+                    {{-- <li>
                         <a href="{{route('about')}}">
                             <h3>About</h3>
                         </a>
@@ -52,17 +52,17 @@
                         <a href="{{route('facesandvoices')}}">
                             <h3>Faces & Voices</h3>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{route('dictionary')}}">
                             <h3>Dictionary</h3>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{route('contribute')}}">
                             <h3>Contribute</h3>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </section>
 

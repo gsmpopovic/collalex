@@ -10,6 +10,7 @@ use App\Http\Controllers\DictionaryController;
 use App\Http\Controllers\LanController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\FVController;
+use App\Http\Controllers\QueryPublicDictionaryController;
 
 
 
@@ -33,11 +34,11 @@ use App\Http\Controllers\DashboardController;
 // });
 
 Route::get("/", [WelcomeController::class, "index"]);
-Route::get("/about", [AboutController::class, "index"])->name("about");
-Route::get("/contribute", [ContributeController::class, "index"])->name("contribute");
-Route::get("/suggest", [SuggestionController::class, "index"])->name("suggest");
-Route::get("/facesandvoices", [FVController::class, "index"])->name("facesandvoices");
-Route::get("/language", [LanController::class, "index"])->name("language");
+// Route::get("/about", [AboutController::class, "index"])->name("about");
+// Route::get("/contribute", [ContributeController::class, "index"])->name("contribute");
+// Route::get("/suggest", [SuggestionController::class, "index"])->name("suggest");
+// Route::get("/facesandvoices", [FVController::class, "index"])->name("facesandvoices");
+// Route::get("/language", [LanController::class, "index"])->name("language");
 
 
 
@@ -45,8 +46,8 @@ Route::get("/dictionary", [DictionaryController::class, "index"])->name("diction
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-
+Route::get('/cdash/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+/****************************************************************** */ 
 // Dashboard routes 
 
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
@@ -55,10 +56,14 @@ Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lex
 // RBAC managed by Laratrust; edited from vendor package Laratrust.
 
 
-Route::resource('/permissions', 'PermissionsController', ['as' => 'laratrust'])
-    ->only(['index', 'edit', 'update'])->middleware('role:admin');
+// Route::resource('/permissions', 'PermissionsController', ['as' => 'laratrust'])
+//     ->only(['index', 'edit', 'update'])->middleware('role:admin');
 
-Route::resource('/roles', 'RolesController', ['as' => 'laratrust'])->middleware('role:admin');
+// Route::resource('/roles', 'RolesController', ['as' => 'laratrust'])->middleware('role:admin');
 
-Route::resource('/roles-assignment', 'RolesAssignmentController', ['as' => 'laratrust'])
-    ->only(['index', 'edit', 'update'])->middleware('role:admin');
+// Route::resource('/roles-assignment', 'RolesAssignmentController', ['as' => 'laratrust'])
+//     ->only(['index', 'edit', 'update'])->middleware('role:admin');
+
+/****************************************************************** */
+// Public Dictionary Routes
+Route::any('/public-dictionary?q=', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');
