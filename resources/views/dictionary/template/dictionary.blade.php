@@ -1,10 +1,10 @@
 @extends("dictionary.template.master")
 @section("content")
-<header>
+{{-- <header>
     <div class="title">
         Here&rsquo;s a random word from the dictionary!
     </div>
-</header>
+</header> --}}
 </article>
 <article class="post">
     <header>
@@ -59,15 +59,16 @@
     <!-- About -->
     <section class="blurb">
         <h2>SEARCH BANTAYANON WORD:</h2>
-        <form method="get" action="{{route('querypubdict')}}">
+        {{-- <form method="get" action="{{route('querypubdict')}}"> --}}
+            <form method="POST" action="/public-dictionary">
             <input type="hidden" value="display" name="action" />
             <div class="row uniform">
                 <div>
-                    <input type="text" name="q" value="" placeholder="Bantayanon word" />
+                    <input type="text" id="bantayanon_word" name="bantayanon_word" value="" placeholder="Bantayanon word" />
                 </div>
                 <div>
                     <ul class="actions">
-                        <li><input type="submit" value="Search" /></li>
+                        <li><input type="submit" value="Search" id="querypubdict"/></li>
                         <li><input type="reset" value="Reset" /></li>
                     </ul>
                 </div>

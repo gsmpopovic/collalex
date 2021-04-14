@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Headword; 
+use Response;
+
+use App\Models\Headword as Headword; 
 
 class QueryPublicDictionaryController extends Controller
 {
@@ -11,10 +13,10 @@ class QueryPublicDictionaryController extends Controller
 
     public function index (Request $request){
 
-        $query_string = $request->q; 
+        $query_string = $request->input('bantayanon_word'); 
 
-        $headwords = App\Models\Headword::where('headword', 'LIKE', '%'.$query_string.'%')->get();
+        $headwords = Headword::where('headword', 'LIKE', '%'.$query_string.'%')->get();
 
-        return view('dictionary.template.show', ['headwords'=>$headwords]);
+        return Response::json($headwords);
     }
 }

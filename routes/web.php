@@ -66,4 +66,4 @@ Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lex
 
 /****************************************************************** */
 // Public Dictionary Routes
-Route::any('/public-dictionary?q=', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');
+Route::any('/public-dictionary', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');

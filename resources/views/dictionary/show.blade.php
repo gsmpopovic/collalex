@@ -1,7 +1,6 @@
 @extends("dictionary.template.master")
 @section("content")
 <header>
-<?php print_r($headwords)?>
 </header>
 </article>
 <article class="post">
