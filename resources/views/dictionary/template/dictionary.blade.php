@@ -81,7 +81,7 @@
 
 <article class="post" id="dict_entries">
 
-    {{-- <header>
+    <header>
         <div class="title">
             <span class="headword" id="headword">ang</span><sub></sub> &nbsp;&nbsp;&nbsp;<a href="#"><span class="pronunciation" id="pronunciation">[áŋ]
                     <i class="fa fa-volume-up"></i></a></span>
@@ -114,7 +114,7 @@
                 </td>
             </tr>
         </table>
-    </footer> --}}
+    </footer>
 </article>
 
 @endsection

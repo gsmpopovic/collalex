@@ -35,13 +35,13 @@ $("#querypubdict").click(function(e) {
                 validity = data[i].validity
 
                 dict_entries.append(`
-                <header class="my-1">
+                <header class="my-0">
                 <div class="title">
                     <span class="headword" id="headword">${headword}</span><sub></sub> &nbsp;&nbsp;&nbsp;<a href="#"><span class="pronunciation" id="pronunciation">[${pronunciation}]
                             <i class="fa fa-volume-up"></i></a></span>
                 </div>
-            <div class="meta"><span class="badge">&nbsp; STATUS: ${validity} &nbsp;</span>
-            </div>
+                <div class="meta"><span class="badge">&nbsp; STATUS: ${validity} &nbsp;</span>
+                </div>
                 </header>
                 `);
 
