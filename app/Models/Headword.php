@@ -56,4 +56,9 @@ class Headword extends Model
 		'loan_lx',
 		'seealso'
 	];
+
+	// Return the senses associated with each headword; refer. on headword id.
+	public function senses(){
+		return $this->hasMany('App\Models\Sense', 'headword_id');
+	}
 }

@@ -62,9 +62,11 @@
         {{-- <form method="get" action="{{route('querypubdict')}}"> --}}
             <form method="POST" action="/public-dictionary">
             <input type="hidden" value="display" name="action" />
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
             <div class="row uniform">
                 <div>
-                    <input type="text" id="bantayanon_word" name="bantayanon_word" value="" placeholder="Bantayanon word" />
+                    <input type="text" id="query_word" name="bantayanon_word" placeholder="Bantayanon word" />
                 </div>
                 <div>
                     <ul class="actions">

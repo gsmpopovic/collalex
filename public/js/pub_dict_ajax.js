@@ -1,25 +1,29 @@
 // Simple AJAX 
 $("#querypubdict").click(function(e) {
+    console.log($('#query_word').val());
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
     e.preventDefault();
-    var word = jQuery('#bantaynon_word').val();
-    var state = jQuery('#querypubdict').val();
+    var formData = {
+            query_word: $('#query_word').val()
+        }
+        // var word = $('#query_word').val();
+    var state = $('#querypubdict').val();
     var type = "POST";
     var ajaxurl = '/public-dictionary';
     $.ajax({
         type: type,
         url: ajaxurl,
-        data: word,
+        data: formData,
         dataType: 'json',
         success: function(data) {
             console.log(data)
         },
         error: function(data) {
-            console.log(data);
+            console.log("error");
         }
     });
 });
