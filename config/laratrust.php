@@ -303,7 +303,7 @@ return [
         */
         // 'middleware' => ['web'],
 
-        'middleware' => ['web','role:admin'],
+        'middleware' => ['web', 'role:administrator'],
 
         /*
         |--------------------------------------------------------------------------

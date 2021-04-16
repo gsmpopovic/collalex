@@ -65,7 +65,10 @@
                         </p>
                     </a>
                 </li>
-
+                {{-- If so and so has the ability to view management routes, i.e., 
+                    an admin.
+                --}}
+                @permission('view-manage')
                 <li class="nav-header">MANAGEMENT</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -91,6 +94,7 @@
                         </p>
                     </a>
                 </li>
+            @endpermission
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -83,10 +83,10 @@
 
     <header>
         <div class="title">
-            <span class="headword" id="headword">ang</span><sub></sub> &nbsp;&nbsp;&nbsp;<a href="#"><span class="pronunciation" id="pronunciation">[áŋ]
+            <span class="headword" id="headword"></span><sub></sub> &nbsp;&nbsp;&nbsp;<a href="#"><span class="pronunciation" id="pronunciation">[pronunciation]
                     <i class="fa fa-volume-up"></i></a></span>
         </div>
-        <div class="meta"><span class="badge">&nbsp; STATUS: pending &nbsp;</span>
+        <div class="meta"><span class="badge">&nbsp; STATUS: &nbsp;</span>
         </div>
     </header>
     <footer>
@@ -105,11 +105,11 @@
                     <h1>case marker</h1>
                 </td>
                 <td>
-                    <p id="englsh">nominal case marker
+                    <p id="englsh">
                     </p>
                 </td>
                 <td>
-                    <p id="cebuano">ang
+                    <p id="cebuano">
                     </p>
                 </td>
             </tr>

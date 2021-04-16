@@ -29,9 +29,11 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
+// Route::group(['middleware' => ['role:administrator']], function() {
+//     Auth::routes();
 // });
+
+Auth::routes();
 
 Route::get("/", [WelcomeController::class, "index"]);
 // Route::get("/about", [AboutController::class, "index"])->name("about");
@@ -44,9 +46,7 @@ Route::get("/", [WelcomeController::class, "index"]);
 
 Route::get("/dictionary", [DictionaryController::class, "index"])->name("dictionary");
 
-Auth::routes();
-
-Route::get('/cdash/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+// Route::get('/cdash/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 /****************************************************************** */ 
 // Dashboard routes 
 

@@ -1,8 +1,15 @@
 // Simple AJAX 
 $("#querypubdict").click(function(e) {
+
+    // Get section where dictionary entries will be injected. Clear it.
     dict_entries = $('#dict_entries');
     dict_entries.html("");
+
+    // Get our query word 
     console.log($('#query_word').val());
+
+    // Set headers.
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -12,8 +19,7 @@ $("#querypubdict").click(function(e) {
     var formData = {
             query_word: $('#query_word').val()
         }
-        // var word = $('#query_word').val();
-    var state = $('#querypubdict').val();
+        // var state = $('#querypubdict').val();
     var type = "POST";
     var ajaxurl = '/public-dictionary';
     $.ajax({
@@ -25,16 +31,14 @@ $("#querypubdict").click(function(e) {
 
             console.log(data);
             count_entries = data.length
-                // dict_entries = $('#dict_entries');
-                // dict_entries.innerHTML = "";
+            if (count_entries > 0) {
+                for (var i = 0; i < count_entries; i++) {
 
-            for (var i = 0; i < count_entries; i++) {
+                    headword = data[i].headword
+                    pronunciation = data[i].pronunciation
+                    validity = data[i].validity
 
-                headword = data[i].headword
-                pronunciation = data[i].pronunciation
-                validity = data[i].validity
-
-                dict_entries.append(`
+                    dict_entries.append(`
                 <header class="my-0">
                 <div class="title">
                     <span class="headword" id="headword">${headword}</span><sub></sub> &nbsp;&nbsp;&nbsp;<a href="#"><span class="pronunciation" id="pronunciation">[${pronunciation}]
@@ -45,10 +49,10 @@ $("#querypubdict").click(function(e) {
                 </header>
                 `);
 
-                count_senses = data[i].senses.length
+                    count_senses = data[i].senses.length
 
-                for (var j = 0; j < count_senses; j++) {
-                    dict_entries.append(`
+                    for (var j = 0; j < count_senses; j++) {
+                        dict_entries.append(`
                     <footer>
                     <table>
                         <thead>
@@ -76,9 +80,17 @@ $("#querypubdict").click(function(e) {
                     </table>
                 </footer> 
                     `);
-                }
+                    }
 
-            };
+                };
+            } else {
+                dict_entries.append(
+                    `
+            <div class="alert alert-danger" role="alert">
+                <span><b>That isn't an entry in our dictionary!</b></span>
+            </div>
+           `);
+            }
         },
         error: function(data) {
 
