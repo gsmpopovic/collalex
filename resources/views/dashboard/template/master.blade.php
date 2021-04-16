@@ -41,5 +41,7 @@
 <!-- ./wrapper -->
 
 @include("dashboard.template.includes.footerscripts")
+
+@yield("ajax");
 </body>
 </html>

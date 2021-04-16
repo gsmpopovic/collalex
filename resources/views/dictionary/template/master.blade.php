@@ -32,6 +32,7 @@
 
     @include("dictionary.template.includes.footerscripts")
 
-    <script src="{{asset('js/pub_dict_ajax.js')}}"></script>
+    @yield("ajax");
+
 </body>
 </html>

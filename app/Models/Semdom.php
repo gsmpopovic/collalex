@@ -32,4 +32,8 @@ class Semdom extends Model
 		'is_eng',
 		'sd_eng'
 	];
+
+	// public function senses(){
+	// 	return$this->belongsToMany('App\Models\Sense', 'semdom_id');
+	// }
 }

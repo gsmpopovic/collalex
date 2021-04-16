@@ -69,4 +69,15 @@ class Sense extends Model
 		'validity',
 		'seealso'
 	];
+
+	// How senses and semdoms are related needs to be rewritten in db. 
+
+	public function semdoms(){
+
+		// hasOne('Model', foreign key, local key)
+		return $this->hasOne('App\Models\Semdom', 'sd_eng', 'semdom_other');
+
+		// return $this->hasOne('App\Models\Semdom', 'semdom_other', 'sd_eng');
+
+	}
 }

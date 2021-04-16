@@ -118,3 +118,9 @@
 </article>
 
 @endsection
+
+@section('ajax')
+
+<script src="{{asset('assets/js/pub_dict_ajax.js')}}"></script>
+
+@endsection

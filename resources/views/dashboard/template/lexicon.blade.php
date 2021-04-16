@@ -1,28 +1,28 @@
 @extends("dashboard.template.master")
 @section('content')
     <div class="row">
-        <nav aria-label="alphabet">
+        <nav aria-label="alphabet" class="navbar navbar-expand-sm">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">FILTER</a></li>
-                <li class="page-item "><a class="page-link" href="?limit=50">LIMIT 50</a></li>
-                <li class="page-item active"><a class="page-link" href="suggestions.php">ALL</a></li>
-                <li class="page-item "><a class="page-link" href="?l=a">a</a></li>
-                <li class="page-item "><a class="page-link" href="?l=b">b</a></li>
-                <li class="page-item "><a class="page-link" href="?l=k">k</a></li>
-                <li class="page-item "><a class="page-link" href="?l=d">d</a></li>
-                <li class="page-item "><a class="page-link" href="?l=g">g</a></li>
-                <li class="page-item "><a class="page-link" href="?l=h">h</a></li>
-                <li class="page-item "><a class="page-link" href="?l=i">i</a></li>
-                <li class="page-item "><a class="page-link" href="?l=l">l</a></li>
-                <li class="page-item "><a class="page-link" href="?l=m">m</a></li>
-                <li class="page-item "><a class="page-link" href="?l=n">n</a></li>
-                <li class="page-item "><a class="page-link" href="?l=p">p</a></li>
-                <li class="page-item "><a class="page-link" href="?l=r">r</a></li>
-                <li class="page-item "><a class="page-link" href="?l=s">s</a></li>
-                <li class="page-item "><a class="page-link" href="?l=t">t</a></li>
-                <li class="page-item "><a class="page-link" href="?l=u">u</a></li>
-                <li class="page-item "><a class="page-link" href="?l=w">w</a></li>
-                <li class="page-item "><a class="page-link" href="?l=y">y</a></li>
+                {{-- <li class="page-item disabled"><a class="page-link query_leters" href="#" tabindex="-1">FILTER</a></li> --}}
+                {{-- <li class="page-item"><a class="page-link query_leters" href="?limit=50">LIMIT 50</a></li> --}}
+                <li class="page-item"><a class="page-link query_leters" href="*">ALL</a></li>
+                <li class="page-item"><a class="page-link query_leters" href="a">a</a></li>
+                <li class="page-item"><a class="page-link query_leters" href="b">b</a></li>
+                <li class="page-item"><a class="page-link query_leters" href="k">k</a></li>
+                <li class="page-item"><a class="page-link query_leters query_leters" href="d">d</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="g">g</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="h">h</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="i">i</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="l">l</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="m">m</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="n">n</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="p">p</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="r">r</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="s">s</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="t">t</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="u">u</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="w">w</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="y">y</a></li>
             </ul>
         </nav>
     </div>
@@ -223,14 +223,14 @@
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-default btn-sm"><i
                                                         class="far fa-trash-alt"></i> delete</button>
-                                                <button type="button" class="btn btn-default btn-sm"><i
+                                                {{-- <button type="button" class="btn btn-default btn-sm"><i
                                                         class="fas fa-arrows-alt-v"></i> move up or down</button>
                                                 <button type="button" class="btn btn-default btn-sm"><i
                                                         class="fas fa-paragraph"></i> add example</button>
                                                 <button type="button" class="btn btn-default btn-sm"><i
                                                         class="fas fa-image"></i> upload image</button>
                                                 <button type="button" class="btn btn-default btn-sm"><i
-                                                        class="fas fa-atom"></i> add scientific name</button>
+                                                        class="fas fa-atom"></i> add scientific name</button> --}}
                                             </div>
                                             <!-- /.btn-group -->
                                             <button type="button" class="btn btn-default btn-sm"><i
@@ -244,11 +244,14 @@
                         <!-- END SENSE CARD -->
                         <div class="row">
                             <div class="col-sm-3"><button type="button" class="btn btn-block btn-info"><i
-                                        class="far fa-plus-square"></i> add sense</button></div>
-                        </div>
-						<div class="row">
-                            <div class="col-sm-3"><button type="button" class="btn btn-block btn-info"><i
-                                        class="far fa-plus-square"></i>save</button></div>
+                                        class="far fa-plus-square"></i> add sense</button>
+
+                                        <button type="button" class="btn btn-block btn-primary"><i
+                                            class="far fa-plus-square"></i>Save Headword</button>
+
+                                            <button type="button" class="btn btn-block btn-primary"><i
+                                                class="far fa-plus-square"></i>Delete Headword</button>
+                                    </div>
                         </div>
                     </div>
                 </div>
@@ -318,3 +321,7 @@
     </div>
 
 @endsection
+
+@section('ajax')
+<script src="{{asset('assets/js/lexicon_ajax.js')}}"></script>
+@append

@@ -2,8 +2,9 @@
 $(".query_leters").click(function(e) {
 
     // get the sorce of the event
-    // var $caller = $(event.target);
-    // console.log($caller.prop("id")); 
+    // i.e., the anchor tags with letters as ther inner html
+
+    var caller = $(e.target);
 
     // Get section where dictionary entries will be injected. Clear it.
     dict_entries = $('#dict_entries');
@@ -12,7 +13,7 @@ $(".query_leters").click(function(e) {
     // Get our query word 
 
     // GET THE VALUE OF THE SOURCE AND THEN PROCEED
-    console.log($('#query_letter').val());
+    console.log(caller.html());
 
     // Set headers.
 
@@ -23,7 +24,7 @@ $(".query_leters").click(function(e) {
     });
     e.preventDefault();
     var formData = {
-            query_letter: $('#query_letter').val()
+            query_letter: caller.html()
         }
         // var state = $('#querypubdict').val();
     var type = "POST";
