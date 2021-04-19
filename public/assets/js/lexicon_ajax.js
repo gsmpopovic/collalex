@@ -24,9 +24,8 @@ $(".query_leters").click(function(e) {
     });
     e.preventDefault();
     var formData = {
-            query_letter: caller.html()
-        }
-        // var state = $('#querypubdict').val();
+        query_letter: caller.html()
+    }
     var type = "POST";
     var ajaxurl = '/query-lexicon';
     $.ajax({

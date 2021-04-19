@@ -3,7 +3,10 @@ $("#querypubdict").click(function(e) {
 
     // Get section where dictionary entries will be injected. Clear it.
     dict_entries = $('#dict_entries');
+    console.log(dict_entries);
+
     dict_entries.html("");
+    console.log(dict_entries);
 
     // Get our query word 
     console.log($('#query_word').val());
@@ -39,47 +42,49 @@ $("#querypubdict").click(function(e) {
                     validity = data[i].validity
 
                     dict_entries.append(`
-                <header class="my-0">
-                <div class="title">
-                    <span class="headword" id="headword">${headword}</span><sub></sub> &nbsp;&nbsp;&nbsp;<a href="#"><span class="pronunciation" id="pronunciation">[${pronunciation}]
-                            <i class="fa fa-volume-up"></i></a></span>
-                </div>
-                <div class="meta"><span class="badge">&nbsp; STATUS: ${validity} &nbsp;</span>
-                </div>
-                </header>
-                `);
+                    <header class="my-0">
+                    <div class="title">
+                        <span class="headword" id="headword">${headword}</span><sub></sub> &nbsp;&nbsp;&nbsp;<a href="#"><span class="pronunciation" id="pronunciation">[${pronunciation}]
+                                <i class="fa fa-volume-up"></i></a></span>
+                    </div>
+                    <div class="meta"><span class="badge">&nbsp; STATUS: ${validity} &nbsp;</span>
+                    </div>
+                    </header>
+                    `);
 
                     count_senses = data[i].senses.length
 
                     for (var j = 0; j < count_senses; j++) {
                         dict_entries.append(`
-                    <footer>
-                    <table>
-                        <thead>
-                            <th></th>
-                            <th>
-                                <h2>english</h2>
-                            </th>
-                            <th>
-                                <h2>cebuano</h2>
-                            </th>
-                        </thead>
-                        <tr>
-                            <td>
-                                <h1>${data[i].senses[j].syncat}</h1>
-                            </td>
-                            <td>
-                                <p id="englsh">${data[i].senses[j].g_eng}
-                                </p>
-                            </td>
-                            <td>
-                                <p id="cebuano">${data[i].senses[j].g_ceb}
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </footer> 
-                    `);
+                        <footer>
+                        <table>
+                            <thead>
+                                <th></th>
+                                <th>
+                                    <h2>english</h2>
+                                </th>
+                                <th>
+                                    <h2>cebuano</h2>
+                                </th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <h1>${data[i].senses[j].syncat}</h1>
+                                </td>
+                                <td>
+                                    <p id="englsh">${data[i].senses[j].g_eng}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p id="cebuano">${data[i].senses[j].g_ceb}
+                                    </p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </footer> 
+                        `);
                     }
 
                 };
