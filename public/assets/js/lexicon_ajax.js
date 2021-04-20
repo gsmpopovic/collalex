@@ -35,6 +35,8 @@ $(".query_leters").click(function(e) {
         dataType: 'json',
         success: function(data) {
 
+            console.log("success");
+
             console.log(data);
             count_entries = data.length
             if (count_entries > 0) {
@@ -57,8 +59,11 @@ $(".query_leters").click(function(e) {
                 dict_entries.append();
             }
         },
-        error: function(data) {
+        error: function(xhr) {
 
+            console.log("error")
+            var err = $.parseJSON(xhr);
+            console.log(err)
         }
     });
 });

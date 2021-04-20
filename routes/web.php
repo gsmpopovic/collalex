@@ -14,9 +14,8 @@ use App\Http\Controllers\QueryPublicDictionaryController;
 
 
 
-use App\Http\Controllers\DashboardController; 
-
-
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\QueryLexiconController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +52,7 @@ Route::get("/dictionary", [DictionaryController::class, "index"])->name("diction
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
 Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
 
+Route::any("/query-lexicon", [QueryLexiconController::class, "index"])->name("query-lexicon")->middleware('auth');
 // RBAC managed by Laratrust; edited from vendor package Laratrust.
 
 
@@ -66,4 +66,4 @@ Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lex
 
 /****************************************************************** */
 // Public Dictionary Routes
-Route::any('/public-dictionary', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');
+Route::post('/public-dictionary', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');

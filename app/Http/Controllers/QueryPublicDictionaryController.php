@@ -15,6 +15,7 @@ class QueryPublicDictionaryController extends Controller
     public function index (Request $request){
 
         $query_string = $request->input('query_word'); 
+
         // $query_string = $request->only('bantayanon_word'); 
 
         // return Response::json($query_string);

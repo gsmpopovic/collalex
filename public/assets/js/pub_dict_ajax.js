@@ -3,13 +3,10 @@ $("#querypubdict").click(function(e) {
 
     // Get section where dictionary entries will be injected. Clear it.
     dict_entries = $('#dict_entries');
-    console.log(dict_entries);
-
     dict_entries.html("");
-    console.log(dict_entries);
 
     // Get our query word 
-    console.log($('#query_word').val());
+    // console.log($('#query_word').val());
 
     // Set headers.
 
@@ -32,7 +29,6 @@ $("#querypubdict").click(function(e) {
         dataType: 'json',
         success: function(data) {
 
-            console.log(data);
             count_entries = data.length
             if (count_entries > 0) {
                 for (var i = 0; i < count_entries; i++) {

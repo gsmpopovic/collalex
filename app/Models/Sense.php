@@ -79,7 +79,7 @@ class Sense extends Model
 
 		// return $this->hasOne('App\Models\Semdom', 'semdom_other', 'sd_eng');
 
-		return $this->hasOne('App\Models\Semdom', 'semdom_id');
+		return $this->hasOne('App\Models\Semdom', 'id');
 
 	}
 }
