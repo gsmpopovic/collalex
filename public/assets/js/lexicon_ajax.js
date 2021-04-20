@@ -13,7 +13,9 @@ $(".query_leters").click(function(e) {
     // Get our query word 
 
     // GET THE VALUE OF THE SOURCE AND THEN PROCEED
-    console.log(caller.html());
+    // console.log(caller.html());
+
+    var caller = caller.html();
 
     // Set headers.
 
@@ -24,20 +26,24 @@ $(".query_leters").click(function(e) {
         }
     });
     e.preventDefault();
-    var formData = {
-        q: caller.html()
-    }
+
+    // input() in Eloquent API won't work because the buttons aren't inputs/not named. 
+
+    // var formData = {
+    //     query: caller
+    // }
+
     var type = "POST";
     var ajaxurl = '/query-lexicon';
     $.ajax({
         type: type,
         url: ajaxurl,
         contentType: "application/json",
-        data: formData,
-        // dataType: 'json',
+        data: caller,
+        dataType: 'json',
         success: function(data) {
 
-            console.log("success");
+            // console.log("success");
 
             console.log(data);
             count_entries = data.length

@@ -13,10 +13,11 @@ class QueryLexiconController extends Controller
     public function index(Request $request){
 
         // dd($request);
-        $letter=$request->input('q');
+        // $letter=$request->input(); 
 
-        echo $letter; 
-        $headwords = Headword::where('headword', 'LIKE', '%'.$letter.'%')->with('senses')->get();
+        $letter=$request->getContent(); 
+
+        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->get();
     
         // dd($headwords);
         return Response::json($headwords);
