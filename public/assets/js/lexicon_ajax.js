@@ -20,19 +20,21 @@ $(".query_leters").click(function(e) {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
         }
     });
     e.preventDefault();
     var formData = {
-        query_letter: caller.html()
+        q: caller.html()
     }
     var type = "POST";
     var ajaxurl = '/query-lexicon';
     $.ajax({
         type: type,
         url: ajaxurl,
+        contentType: "application/json",
         data: formData,
-        dataType: 'json',
+        // dataType: 'json',
         success: function(data) {
 
             console.log("success");
@@ -62,8 +64,7 @@ $(".query_leters").click(function(e) {
         error: function(xhr) {
 
             console.log("error")
-            var err = $.parseJSON(xhr);
-            console.log(err)
+            console.log(xhr.status)
         }
     });
 });

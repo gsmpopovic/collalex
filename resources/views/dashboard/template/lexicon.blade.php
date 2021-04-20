@@ -5,7 +5,7 @@
             <ul class="pagination justify-content-center">
                 {{-- <li class="page-item disabled"><a class="page-link query_leters" href="#" tabindex="-1">FILTER</a></li> --}}
                 {{-- <li class="page-item"><a class="page-link query_leters" href="?limit=50">LIMIT 50</a></li> --}}
-                <li class="page-item"><a class="page-link query_leters" href="*">ALL</a></li>
+                <li class="page-item"><button class="page-link query_leters" value="a">ALL</button></li>
                 <li class="page-item"><a class="page-link query_leters" href="a">a</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="b">b</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="k">k</a></li>
