@@ -34,6 +34,13 @@ class Semdom extends Model
 	];
 
 	public function senses(){
-		return$this->belongsToMany('App\Models\Sense', 'semdom_id');
+		// return$this->belongsToMany('App\Models\Sense', 'semdom_id');
+
+		return $this->belongsToMany('App\Models\Semdom', 'semdom_id','is_eng');
+
+		// In Sense->semdoms()
+		// return $this->hasOne('App\Models\Semdom', 'is_eng','semdom_id');
+
+
 	}
 }

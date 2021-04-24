@@ -75,11 +75,15 @@ class Sense extends Model
 	public function semdoms(){
 
 		// hasOne('Model', foreign key, local key)
+		// The foreign key is the column referemced in the second table; 
+		// the local key, the column in the first table that references it in the first. 
+
+		return $this->hasOne('App\Models\Semdom', 'is_eng','semdom_id');
+
 		// return $this->hasOne('App\Models\Semdom', 'sd_eng', 'semdom_other');
 
 		// return $this->hasOne('App\Models\Semdom', 'semdom_other', 'sd_eng');
 
-		return $this->hasOne('App\Models\Semdom', 'id');
-
+		// return $this->hasOne('App\Models\Semdom', 'id'. 'is_eng');
 	}
 }

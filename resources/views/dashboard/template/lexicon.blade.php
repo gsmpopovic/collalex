@@ -165,9 +165,6 @@
 
                                         <button type="button" class="btn btn-block btn-primary"><i
                                             class="far fa-plus-square"></i>Save Headword</button>
-
-                                            <button type="button" class="btn btn-block btn-primary"><i
-                                                class="far fa-plus-square"></i>Delete Headword</button>
                                     </div>
                         </div>
                     </div>
@@ -211,7 +208,7 @@
             </div> --}}
         </div>
     </div>
-
+{{-- 
     <div class="row">
         <p>The words that show up on this page will be driven by queries.</p>
         <ul>
@@ -235,7 +232,7 @@
             * letter options do not wrap on mobile screens.<br>
             * empty fields should show different color<br>
             * other headwords should collapse when another is selected (only one open at a time)</p>
-    </div>
+    </div> --}}
 
 @endsection
 
