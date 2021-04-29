@@ -5,7 +5,7 @@
             <ul class="pagination justify-content-center">
                 {{-- <li class="page-item disabled"><a class="page-link query_leters" href="#" tabindex="-1">FILTER</a></li> --}}
                 {{-- <li class="page-item"><a class="page-link query_leters" href="?limit=50">LIMIT 50</a></li> --}}
-                <li class="page-item"><button class="page-link query_leters" value="a">ALL</button></li>
+                {{-- <li class="page-item"><button class="page-link query_leters" value="a">ALL</button></li> --}}
                 <li class="page-item"><a class="page-link query_leters" href="a">a</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="b">b</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="k">k</a></li>
@@ -26,30 +26,24 @@
             </ul>
         </nav>
     </div>
-    <div class="row">
+    <div class="row" id="lexicon-row">
         <div id="accordion">
            <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
            <div class="card card-olive card-outline">
-            <div class="card-header">
-                <h4 class="card-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        <strong id="headword-header">aga</strong> 
-                        <i id="pronunciation-header">[á.ga]</i>                           
-                         {{-- 1. 
-                         <em>noun</em> 
-                        <sub>ENG</sub> morning, 
-                        <sub>CEB</sub> buntag; 
-                        2.
-                        <em>verb</em> 
-                        <sub>ENG</sub> be morning,
-                        <sub>CEB</sub> buntag --}}
-                    </a>
+              <div class="card-header">
+    
+                 <h4 class="card-title">
+                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      Create an entry
+                   </a>
                 </h4>
-            </div>
-              <form role="form" method="POST" action="{{route("create-entry")}}">
+              </div>
+              <form role="form" method="POST" action="{{route("update-entry")}}">
               <div id="collapseOne" class="panel-collapse collapse in">
                  <div class="card-body">
+                    {{-- <form role="form" method="POST" action="{{route("create-entry")}}"> --}}
                       {{ csrf_field() }}
+    
                        <div class="row">
                          <div class="col-sm-5">
                             <!-- text input -->
@@ -68,7 +62,6 @@
                              </div>
                           </div>
                        </div>
-                    {{-- </form> --}}
                     <!-- START SENSE CARD -->
                     <div class="row">
                        <div class="col-md-12">
@@ -143,7 +136,9 @@
                     <div class="row">
                        <div class="col-sm-3"><button type="button" class="btn btn-block btn-info"><i
                           class="far fa-plus-square"></i>Add Sense</button>
-                          <input type="submit" class="btn btn-block btn-primary" value="Save">
+                          <input type="submit" class="btn btn-block btn-primary">
+                          {{-- <button type="button" class="btn btn-block btn-primary"><i
+                             class="far fa-plus-square"></i>Save Headword</button> --}}
                        </div>
                     </div>
                  </div>
