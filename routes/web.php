@@ -52,7 +52,17 @@ Route::get("/dictionary", [DictionaryController::class, "index"])->name("diction
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
 Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
 
+Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create')->middleware('auth');
+// Lexicon routes 
+
 Route::any("/query-lexicon", [QueryLexiconController::class, "index"])->name("query-lexicon")->middleware('auth');
+
+Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon")->middleware('auth');
+
+Route::get("/search-lexicon/{query_string}", [QueryLexiconController::class, "display-search"])->name("display-lexicon")->middleware('auth');
+
+Route::post("create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry")->middleware('auth');
+
 // RBAC managed by Laratrust; edited from vendor package Laratrust.
 
 

@@ -24,4 +24,8 @@ class DashboardController extends Controller
         return view("dashboard.template.lexicon");
 
     }
+
+    public function display_create(){
+        return view("dashboard.template.lexicon-create");
+    }
 }

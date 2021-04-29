@@ -61,9 +61,17 @@
                     <a href="{{ route('lexicon') }}" class="nav-link">
                         <i class="nav-icon fas fa-book-open"></i>
                         <p>
-                            Lexicon
+                            View Lexicon
                         </p>
                     </a>
+                <li class="nav-item">
+                    <a href="{{ route('display-create') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p>
+                            Create Entry 
+                        </p>
+                    </a>
+                </li>
                 </li>
                 {{-- If so and so has the ability to view management routes, i.e., 
                     an admin.

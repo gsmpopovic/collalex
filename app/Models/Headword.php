@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
 class Headword extends Model
 {
 	protected $table = 'headwords';
-	public $incrementing = false;
+	public $incrementing = true;
 	public $timestamps = false;
 
 	protected $casts = [
