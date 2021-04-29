@@ -40,6 +40,7 @@ $(".query_leters").click(function(e) {
         dataType: 'json',
         success: function(paginated_data) {
             // Because we paginated our data, we need to get the data within it. 
+            console.log(paginated_data);
             data = paginated_data.data;
             count_entries = data.length
             if (count_entries > 0) {
@@ -47,6 +48,7 @@ $(".query_leters").click(function(e) {
                     headword = data[i].headword
                     pronunciation = data[i].pronunciation
                     validity = data[i].validity
+                    hw_id = data[i].id
 
                     lex_entries.append(`
                     <div id="accordion">
@@ -55,13 +57,13 @@ $(".query_leters").click(function(e) {
                        <div class="card-header">
              
                           <h4 class="card-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse${i}">
                                ${headword}
                             </a>
                          </h4>
                        </div>
                        <form role="form" method="POST" action="{{route("update-entry")}}">
-                       <div id="collapseOne" class="panel-collapse collapse in">
+                       <div id="collapse${i}" class="panel-collapse collapse in">
                           <div class="card-body">
                              {{-- <form role="form" method="POST" action="{{route("create-entry")}}"> --}}
                                {{ csrf_field() }}
@@ -72,6 +74,7 @@ $(".query_leters").click(function(e) {
                                      <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
                                            placeholder="Spelling of word" name="headword-input" value="${headword}" required>
+                                           <input type="hidden"name="headword-id-input" value="${hw_id}" required>
                                         <label for="floatingInput">Headword</label>
                                      </div>
                                   </div>
@@ -79,7 +82,7 @@ $(".query_leters").click(function(e) {
                                       <!-- text input -->
                                       <div class="form-floating mb-3">
                                          <input type="text" class="form-control" id="floatingInput"
-                                            placeholder="Pronunciation of word" name="pronunciation-input value="${pronuncation}" required">
+                                            placeholder="Pronunciation of word" name="pronunciation-input" value="${pronunciation}" required">
                                          <label for="floatingInput">Pronunciation</label>
                                       </div>
                                    </div>
@@ -96,7 +99,7 @@ $(".query_leters").click(function(e) {
                            <div class="col-md-12">
                               <div class="card card-info card-outline collapsed-card">
                                  <div class="card-header">
-                                    <h3 class="card-title">Sense:
+                                    <h3 class="card-title">Sense ${j + 1}:
                                     </h3>
                                     <div class="card-tools">
                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
@@ -132,14 +135,14 @@ $(".query_leters").click(function(e) {
                                           <div class="col-sm-3">
                                              <div class="form-floating mb-3">
                                                 <input type="text" class="form-control" id="floatingInput" name="eng-input"
-                                                   placeholder="English Translation">
+                                                   placeholder="English Translation" value="${data[i].senses[j].g_eng}">
                                                 <label for="floatingInput">English gloss</label>
                                              </div>
                                           </div>
                                           <div class="col-sm-3">
                                              <div class="form-floating mb-3">
                                                 <input type="text" class="form-control" id="floatingInput" name="ceb-input"
-                                                   placeholder="Cebuano Translation">
+                                                   placeholder="Cebuano Translation" value="${data[i].senses[j].ceb_gloss}">
                                                 <label for="floatingInput">Cebuano gloss</label>
                                              </div>
                                           </div>
@@ -177,6 +180,12 @@ $(".query_leters").click(function(e) {
                         `);
                     }
                 };
+                // Because Laravel pagination
+                links = paginated_data.links
+                for (var k = 0; k < links.length; k++) {
+                    lex_entries.append(
+                        `<a href="${links[k].url}">${links[k].label}</a>`);
+                }
             } else {
                 lex_entries.append();
             }

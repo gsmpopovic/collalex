@@ -34,11 +34,11 @@
     
                  <h4 class="card-title">
                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                      Create an entry
+                      Headword
                    </a>
                 </h4>
               </div>
-              <form role="form" method="POST" action="{{route("update-entry")}}">
+              <form role="form" method="" action="">
               <div id="collapseOne" class="panel-collapse collapse in">
                  <div class="card-body">
                     {{-- <form role="form" method="POST" action="{{route("create-entry")}}"> --}}
@@ -136,9 +136,8 @@
                     <div class="row">
                        <div class="col-sm-3"><button type="button" class="btn btn-block btn-info"><i
                           class="far fa-plus-square"></i>Add Sense</button>
-                          <input type="submit" class="btn btn-block btn-primary">
-                          {{-- <button type="button" class="btn btn-block btn-primary"><i
-                             class="far fa-plus-square"></i>Save Headword</button> --}}
+                          <button type="button" class="btn btn-block btn-primary"><i
+                             class="far fa-plus-square"></i>Save</button>
                        </div>
                     </div>
                  </div>

@@ -21,7 +21,7 @@ class QueryLexiconController extends Controller
 
         $letter=$request->getContent(); 
 
-        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->paginate();
+        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->paginate();
     
         return Response::json($headwords);
 
