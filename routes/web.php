@@ -56,14 +56,16 @@ Route::get("/display-lexicon-create", [DashboardController::class, "display_crea
 // Lexicon routes 
 
 Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
+//Route::get("/query-lexicon-letters?page=2", [QueryLexiconController::class, "pagination"])->name("query-lexicon-letters")->middleware('auth');
 
+//query-lexicon-letters?page=1
 Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon")->middleware('auth');
 
 Route::get("/search-lexicon/{query_string}", [QueryLexiconController::class, "display-search"])->name("display-lexicon")->middleware('auth');
 
-Route::post("create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry")->middleware('auth');
+Route::post("/create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry")->middleware('auth');
 
-Route::post("update-lexicon-entry", [QueryLexiconController::class, "update_entry"])->name("update-entry")->middleware('auth');
+Route::post("/update-lexicon-entry", [QueryLexiconController::class, "update_entry"])->name("update-entry")->middleware('auth');
 
 
 // RBAC managed by Laratrust; edited from vendor package Laratrust.

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Response; 
+use Session;
 
 use App\Models\Headword as Headword;
 
@@ -21,9 +22,19 @@ class QueryLexiconController extends Controller
 
         $letter=$request->getContent(); 
 
+        $csrf=Session::token();
         $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->paginate();
     
-        return Response::json($headwords);
+        return Response::json([$headwords, $csrf]);
+
+    }
+
+    public function pagination(Request $request){
+
+        // The idea here is to get a list of headword entries that start with a given letter, 
+        // as chosen by the user from the list of buttons on main lexicon page,
+
+        return view('lexicon.blade.php');
 
     }
 
@@ -58,7 +69,7 @@ class QueryLexiconController extends Controller
 
         $headword = new Headword();
         $headword->headword=$request->input('headword-input');
-        $headword->pronunciation=$request->input('pronnciatin-input');
+        $headword->pronunciation=$request->input('pronunciation-input');
         $headword->user=Auth::user()->id;
         $headword->save();
 
@@ -95,14 +106,14 @@ class QueryLexiconController extends Controller
         // semdom-input,eng-input, syncat-input, ceb-input,
 
 
-        $id->$request->input('headword-id-input');
-        $headword = where('id', $headword_id);
+        $headword_id=$request->input('headword-id-input');
+        $headword = Headword::where('id', '=', $headword_id)->first();
         $headword->headword=$request->input('headword-input');
-        $headword->pronunciation=$request->input('pronnciatin-input');
+        $headword->pronunciation=$request->input('pronunciation-input');
         $headword->user=Auth::user()->id;
         $headword->save();
 
-        $sense =new Sense();
+        $sense=$request->input('sense-id-input');
         $sense->headword_id=$headword->id; 
         $sense->g_eng=$request->input('eng-input');
         $sense->g_ceb=$request->input('ceb-input');

@@ -39,9 +39,12 @@ $(".query_leters").click(function(e) {
         data: caller,
         dataType: 'json',
         success: function(paginated_data) {
-            // Because we paginated our data, we need to get the data within it. 
-            console.log(paginated_data);
-            data = paginated_data.data;
+            // Because we paginated our data, we need to get the data within it.
+            // array of two because crsf
+            console.log(paginated_data[0]);
+            console.log(paginated_data[1]);
+
+            data = paginated_data[0].data;
             count_entries = data.length
             if (count_entries > 0) {
                 for (var i = 0; i < count_entries; i++) {
@@ -62,19 +65,18 @@ $(".query_leters").click(function(e) {
                             </a>
                          </h4>
                        </div>
-                       <form role="form" method="POST" action="{{route("update-entry")}}">
+                       <form role="form" method="POST" action="../update-lexicon-entry">
+                       <input type="hidden" name="_token" value="${paginated_data[1]}">
+
                        <div id="collapse${i}" class="panel-collapse collapse in">
                           <div class="card-body">
-                             {{-- <form role="form" method="POST" action="{{route("create-entry")}}"> --}}
-                               {{ csrf_field() }}
-             
+                               <input type="hidden"name="headword-id-input" value="${hw_id}" >
                                 <div class="row">
                                   <div class="col-sm-5">
                                      <!-- text input -->
                                      <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
                                            placeholder="Spelling of word" name="headword-input" value="${headword}" required>
-                                           <input type="hidden"name="headword-id-input" value="${hw_id}" required>
                                         <label for="floatingInput">Headword</label>
                                      </div>
                                   </div>
@@ -113,6 +115,7 @@ $(".query_leters").click(function(e) {
                                        <div class="row g-2">
                                           <div class="col-sm-3">
                                              <div class="form-floating">
+                                             <input type="hidden"name="sense-id-input" value="${data[i].senses[j].id}" >
                                                 <select class="form-select" id="floatingSelectGrid" name="syncat-input"
                                                    aria-label="Floating label select example">
                                                    <option>${data[i].senses[j].syncat}</option>
@@ -142,7 +145,7 @@ $(".query_leters").click(function(e) {
                                           <div class="col-sm-3">
                                              <div class="form-floating mb-3">
                                                 <input type="text" class="form-control" id="floatingInput" name="ceb-input"
-                                                   placeholder="Cebuano Translation" value="${data[i].senses[j].ceb_gloss}">
+                                                   placeholder="Cebuano Translation" value="${data[i].senses[j].g_ceb}">
                                                 <label for="floatingInput">Cebuano gloss</label>
                                              </div>
                                           </div>
@@ -181,10 +184,14 @@ $(".query_leters").click(function(e) {
                     }
                 };
                 // Because Laravel pagination
-                links = paginated_data.links
+                // `<a href="${links[k].url}">${links[k].label}</a>`);
+
+                links = paginated_data[0].links
                 for (var k = 0; k < links.length; k++) {
+                    console.log(links[k])
                     lex_entries.append(
-                        `<a href="${links[k].url}">${links[k].label}</a>`);
+                        // `<p>${links[k]}</p>`)
+                        `<a href="${links[k].url}">${links[k].label}</a>`)
                 }
             } else {
                 lex_entries.append();
