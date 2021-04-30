@@ -87,7 +87,7 @@ class QueryLexiconController extends Controller
 
     }
 
-    // ****************** CREATING A NEW ENTRY ****************** // 
+    // ****************** UPDATING AN ENTRY ****************** // 
 
     public function update_entry(Request $request){
         // Headword fields:
@@ -105,16 +105,23 @@ class QueryLexiconController extends Controller
         // sense inputs: 
         // semdom-input,eng-input, syncat-input, ceb-input,
 
-
+        
         $headword_id=$request->input('headword-id-input');
         $headword = Headword::where('id', '=', $headword_id)->first();
         $headword->headword=$request->input('headword-input');
         $headword->pronunciation=$request->input('pronunciation-input');
         $headword->user=Auth::user()->id;
         $headword->save();
+        // error_log($headword);
+        $sense_id=$request->input('sense-id-input');
+        // error_log(serialize($request->all()));
 
-        $sense=$request->input('sense-id-input');
-        $sense->headword_id=$headword->id; 
+        // $sense=Sense::where('headword_id', '=', $headword_id)->first(); 
+        // $sense=Sense::find( $sense_id)->first(); 
+        $sense=Sense::where('id', '=', $sense_id)->first(); 
+
+        // error_log(serialize($sense));
+
         $sense->g_eng=$request->input('eng-input');
         $sense->g_ceb=$request->input('ceb-input');
         $sense->syncat=$request->input('syncat-input');

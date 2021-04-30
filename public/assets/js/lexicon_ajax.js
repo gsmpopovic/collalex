@@ -41,10 +41,11 @@ $(".query_leters").click(function(e) {
         success: function(paginated_data) {
             // Because we paginated our data, we need to get the data within it.
             // array of two because crsf
-            console.log(paginated_data[0]);
-            console.log(paginated_data[1]);
+            // console.log(paginated_data[0]);
+            // console.log(paginated_data[1]);
 
             data = paginated_data[0].data;
+            // console.log(data);
             count_entries = data.length
             if (count_entries > 0) {
                 for (var i = 0; i < count_entries; i++) {
@@ -52,6 +53,7 @@ $(".query_leters").click(function(e) {
                     pronunciation = data[i].pronunciation
                     validity = data[i].validity
                     hw_id = data[i].id
+                        //   console.log(hw_id);
 
                     lex_entries.append(`
                     <div id="accordion">
@@ -90,11 +92,27 @@ $(".query_leters").click(function(e) {
                                    </div>
                                 </div>
                                 <div class="row" id="entry${i}"></div>
+                                <div class="row">
+                                <div class="col-sm-3"><button type="button" class="btn btn-block btn-info"><i
+                                   class="far fa-plus-square"></i>Add Sense</button>
+                                   <input type="submit" class="btn btn-block btn-primary">
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                      </form>
+                    </div>
+                 </div>
+             </div>
                     `);
 
                     count_senses = data[i].senses.length
                     lex_entry = $("#entry" + i);
                     for (var j = 0; j < count_senses; j++) {
+                        sense_id = data[i].senses[j].id;
+                        // console.log('hi');
+                        // console.log("id: " + sense_id)
+
                         lex_entry.append(`
                         <!-- START SENSE CARD -->
 
@@ -111,19 +129,18 @@ $(".query_leters").click(function(e) {
                                  </div>
                                  <!-- /.card-header -->
                                  <div class="card-body">
-                                    <form role="form">
                                        <div class="row g-2">
                                           <div class="col-sm-3">
                                              <div class="form-floating">
-                                             <input type="hidden"name="sense-id-input" value="${data[i].senses[j].id}" >
+                                             <input type="hidden"name="sense-id-input" value="${sense_id}">
                                                 <select class="form-select" id="floatingSelectGrid" name="syncat-input"
                                                    aria-label="Floating label select example">
-                                                   <option>${data[i].senses[j].syncat}</option>
-                                                   <option selected>noun</option>
-                                                   <option>verb</option>
-                                                   <option>case marker</option>
-                                                   <option>aspect particle</option>
-                                                   <option>temporal particle</option>
+                                                   <option value="${data[i].senses[j].syncat}">${data[i].senses[j].syncat}</option>
+                                                   <option value="noun">noun</option>
+                                                   <option value="verb">verb</option>
+                                                   <option value="case marker">case marker</option>
+                                                   <option value="aspect particle">aspect particle</option>
+                                                   <option value="temporal particle">temporal particle</option>
                                                 </select>
                                                 <label for="floatingSelectGrid">Syntactic Category</label>
                                              </div>
@@ -150,7 +167,6 @@ $(".query_leters").click(function(e) {
                                              </div>
                                           </div>
                                        </div>
-                                    </form>
                                  </div>
                                  <!-- /.card-body -->
                                  <div class="card-footer p-0">
@@ -168,18 +184,7 @@ $(".query_leters").click(function(e) {
                            </div>
 
                         <!-- END SENSE CARD -->
-                        <div class="row">
-                        <div class="col-sm-3"><button type="button" class="btn btn-block btn-info"><i
-                           class="far fa-plus-square"></i>Add Sense</button>
-                           <input type="submit" class="btn btn-block btn-primary">
-                        </div>
-                     </div>
-                  </div>
-               </div>
-              </form>
-            </div>
-         </div>
-     </div>
+
                         `);
                     }
                 };
@@ -188,7 +193,7 @@ $(".query_leters").click(function(e) {
 
                 links = paginated_data[0].links
                 for (var k = 0; k < links.length; k++) {
-                    console.log(links[k])
+                    //   console.log(links[k])
                     lex_entries.append(
                         // `<p>${links[k]}</p>`)
                         `<a href="${links[k].url}">${links[k].label}</a>`)
