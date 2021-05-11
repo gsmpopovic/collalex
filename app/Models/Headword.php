@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Headword
@@ -29,6 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Headword extends Model
 {
+
+    use LogsActivity;
 	protected $table = 'headwords';
 	public $incrementing = true;
 	public $timestamps = false;

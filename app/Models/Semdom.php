@@ -7,6 +7,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
 
 /**
  * Class Semdom
@@ -19,6 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Semdom extends Model
 {
+
+	use LogsActivity; 
+	
 	protected $table = 'semdoms';
 	public $incrementing = false;
 	public $timestamps = false;

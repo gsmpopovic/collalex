@@ -8,6 +8,8 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
 
 /**
  * Class Suggestion
@@ -36,6 +38,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Suggestion extends Model
 {
+
+	use LogsActivity; 
+
 	protected $table = 'suggestions';
 	public $incrementing = false;
 	public $timestamps = false;

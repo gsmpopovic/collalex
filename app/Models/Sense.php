@@ -8,6 +8,8 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
 
 /**
  * Class Sense
@@ -35,8 +37,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Sense extends Model
 {
+
+	use LogsActivity; 
+
 	protected $table = 'senses';
-	public $incrementing = false;
+	public $incrementing = true;
 	public $timestamps = false;
 
 	protected $casts = [
@@ -50,7 +55,6 @@ class Sense extends Model
 	];
 
 	protected $fillable = [
-		'id',
 		'headword_id',
 		'syncat',
 		'g_eng',
@@ -69,6 +73,27 @@ class Sense extends Model
 		'validity',
 		'seealso'
 	];
+
+	// protected $fillable = [
+	// 	'id',
+	// 	'headword_id',
+	// 	'syncat',
+	// 	'g_eng',
+	// 	'g_ceb',
+	// 	'g_hil',
+	// 	'g_tgl',
+	// 	'd_eng',
+	// 	'd_ceb',
+	// 	'd_hil',
+	// 	'd_tgl',
+	// 	'semdom_id',
+	// 	'semdom_other',
+	// 	'comments',
+	// 	'user',
+	// 	'date',
+	// 	'validity',
+	// 	'seealso'
+	// ];
 
 	// How senses and semdoms are related needs to be rewritten in db. 
 
