@@ -48,6 +48,11 @@ class QueryLexiconController extends Controller
         return redirect()->route("display-lexicon")->with(["headwords"=>$headwords]);
     }
 
+    public function display_search(){
+
+        Session::get("headwords");
+        return view('dashboard.template.lexicon-search');
+    }
     // ****************** CREATING A NEW ENTRY ****************** // 
 
     public function create_entry(Request $request){

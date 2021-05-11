@@ -61,7 +61,7 @@ Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->
 //query-lexicon-letters?page=1
 Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon")->middleware('auth');
 
-Route::get("/search-lexicon/{query_string}", [QueryLexiconController::class, "display-search"])->name("display-lexicon")->middleware('auth');
+Route::get("/display-searchlexicon", [QueryLexiconController::class, "display_search"])->name("display-lexicon")->middleware('auth');
 
 Route::post("/create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry")->middleware('auth');
 
