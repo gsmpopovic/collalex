@@ -67,6 +67,8 @@ Route::post("/create-lexicon-entry", [QueryLexiconController::class, "create_ent
 
 Route::post("/update-lexicon-entry", [QueryLexiconController::class, "update_entry"])->name("update-entry")->middleware('auth');
 
+Route::any("/delete-sense-from-entry", [QueryLexiconController::class, "delete_sense"])->name("delete-sense-entry")->middleware('auth');
+
 
 // RBAC managed by Laratrust; edited from vendor package Laratrust.
 

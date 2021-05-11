@@ -133,4 +133,37 @@ class QueryLexiconController extends Controller
         return back();
 
     }
+
+        // ****************** DELETING SENSE FROM AN ENTRY ****************** // 
+
+        public function delete_sense(Request $request){
+
+        // sense fields:
+        // syncat, g_eng, g_ceb, semdom_id, user, headword_id
+
+        // sense inputs: 
+        // semdom-input,eng-input, syncat-input, ceb-input,
+
+        // $sense=Sense::where('headword_id', '=', $headword_id)->first(); 
+        // $sense=Sense::find( $sense_id)->first(); 
+
+        
+        $sense_id=$request->getContent(); 
+
+        $sense=Sense::where('id', '=', $sense_id)->first(); 
+        error_log(serialize($sense_id));
+
+        error_log(serialize($sense));
+
+        if ($sense)
+        {$sense->delete();
+           return Response::json(["OK"]);
+
+        } else{
+            return Response::json(["NOT OK"]);
+
+        }
+
+        
+        }
 }
