@@ -50,7 +50,8 @@ class QueryLexiconController extends Controller
 
     public function display_search(){
 
-        Session::get("headwords");
+        // $headwords=Session::get("headwords");
+        // Session::put("headwords", $headwords);
         return view('dashboard.template.lexicon-search');
     }
     // ****************** CREATING A NEW ENTRY ****************** // 

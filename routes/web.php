@@ -82,5 +82,6 @@ Route::any("/delete-sense-from-entry", [QueryLexiconController::class, "delete_s
 //     ->only(['index', 'edit', 'update'])->middleware('role:admin');
 
 /****************************************************************** */
+
 // Public Dictionary Routes
 Route::post('/public-dictionary', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');
