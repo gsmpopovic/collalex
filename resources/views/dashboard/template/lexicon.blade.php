@@ -157,16 +157,9 @@
         </div>
     </div>
         @endforeach
-
-
         <div class="d-flex justify-content-center">
             {!! $headwords->links() !!}
-        </div>{{-- 
-        @foreach ($headwords>links() as $item)
-
-        {{$item['url']}}
-            
-        @endforeach --}}
+        </div>
    </div>
 
         @else

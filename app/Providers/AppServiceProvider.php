@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-// use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\Paginator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
 
         //collalex\resources\views\dashboard\template\lexicon.blade.php
 
-        // Paginator::useBootstrap();
+        Paginator::useBootstrap();
 
         // Paginator::defaultView('dashboard.template.lexicon');
 
