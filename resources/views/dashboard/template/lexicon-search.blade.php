@@ -155,10 +155,9 @@
            </div>
           </form>
         </div>
-     </div>
- </div>
-        
         @endforeach
+     </div>
+   </div>
 
         @else
 
