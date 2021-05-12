@@ -32,7 +32,13 @@ use App\Http\Controllers\QueryLexiconController;
 //     Auth::routes();
 // });
 
-Auth::routes();
+// Auth::routes();
+
+Auth::routes([
+    'register' => true,
+    'verify' => true,
+    'reset' => false
+  ]);
 
 Route::get("/", [WelcomeController::class, "index"]);
 // Route::get("/about", [AboutController::class, "index"])->name("about");
@@ -58,7 +64,6 @@ Route::get("/display-lexicon-create", [DashboardController::class, "display_crea
 Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
 //Route::get("/query-lexicon-letters?page=2", [QueryLexiconController::class, "pagination"])->name("query-lexicon-letters")->middleware('auth');
 
-//query-lexicon-letters?page=1
 Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon")->middleware('auth');
 
 Route::get("/display-searchlexicon", [QueryLexiconController::class, "display_search"])->name("display-lexicon")->middleware('auth');

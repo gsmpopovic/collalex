@@ -31,7 +31,7 @@ class User extends Authenticatable
 {
 
 	use LogsActivity; 
-
+	use \Illuminate\Notifications\Notifiable;
 	use LaratrustUserTrait;
 	protected $table = 'users';
 
