@@ -105,7 +105,7 @@
                                                              <div class="row g-2">
                                                                 <div class="col-sm-3">
                                                                    <div class="form-floating">
-                                                                   <input type="text"name="sense-id-input" value="{{$sense->id}}" readonly>
+                                                                   <input type="text"name="sense_id_input[]" value="{{$sense->id}}" hidden>
                                                                       <select class="form-select" id="floatingSelectGrid" name="syncat-input[]"
                                                                          aria-label="Floating label select example">
                                                                          <option value="{{$sense->syncat}}">{{$sense->syncat}}</option>
@@ -312,5 +312,5 @@
 @endsection
 
 @section('ajax')
-{{-- <script src="{{asset('assets/js/lexicon_ajax.js')}}"></script> --}}
+<script src="{{asset('assets/js/lexicon_ajax.js')}}"></script>
 @append

@@ -170,43 +170,17 @@ class QueryLexiconController extends Controller
         $headword->user=Auth::user()->id;
         $headword->save();
 
-        error_log($sense_id=$request->input('sense-id-input'));
-        // error_log($headword);
-        foreach($sense_id=$request->input('sense-id-input') as $item){
-        // error_log(serialize($sense_id));
-        
-        // $sense=Sense::where('headword_id', '=', $headword_id)->first();
-        // $sense=Sense::find( $sense_id)->first();
-        $sense=Sense::where('id', '=', $sense_id)->first();
-        
-        // error_log(serialize($sense));
-        
-        $sense->g_eng=$request->input('eng-input');
-        $sense->g_ceb=$request->input('ceb-input');
-        $sense->syncat=$request->input('syncat-input');
-        $sense->semdom_id=$request->input('semdom-input');
-        $sense->user=Auth::user()->id;
-        
-        $sense->save();
+        // this will cycle through the arrays of inputs.
+        foreach($request->sense_id_input as $k => $sense_id){
+            $sense=Sense::where('id', '=', $sense_id)->first();
+            $sense->g_eng=$request->input('eng-input')[$k];
+            $sense->g_ceb=$request->input('ceb-input')[$k];
+            $sense->syncat=$request->input('syncat-input')[$k];
+            $sense->semdom_id=$request->input('semdom-input')[$k];
+            $sense->user=Auth::user()->id;
+            
+            $sense->save();
     }        
-        // // error_log($headword);
-        // $sense_id=$request->input('sense-id-input');
-        // // error_log(serialize($request->all()));
-
-        // // $sense=Sense::where('headword_id', '=', $headword_id)->first(); 
-        // // $sense=Sense::find( $sense_id)->first(); 
-        // $sense=Sense::where('id', '=', $sense_id)->first(); 
-
-        // // error_log(serialize($sense));
-
-        // $sense->g_eng=$request->input('eng-input');
-        // $sense->g_ceb=$request->input('ceb-input');
-        // $sense->syncat=$request->input('syncat-input');
-        // $sense->semdom_id=$request->input('semdom-input');
-        // $sense->user=Auth::user()->id;
-
-        // $sense->save();
-        
         return back();
 
     }

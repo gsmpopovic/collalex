@@ -219,49 +219,49 @@ $(".query_leters").click(function(e) {
                 lex_entries.append();
             }
 
-            // DELETING A SENSE FROM A CARD
-            $(".delete_sense").click(function(event) {
+            // // DELETING A SENSE FROM A CARD
+            // $(".delete_sense").click(function(event) {
 
-                // Set headers.
+            //     // Set headers.
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     $.ajaxSetup({
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 
-                    }
-                });
-                event.preventDefault();
-                // get the sorce of the event
-                // i.e., the anchor tags with letters as ther inner html
+            //         }
+            //     });
+            //     event.preventDefault();
+            //     // get the sorce of the event
+            //     // i.e., the anchor tags with letters as ther inner html
 
-                console.log("button clciked")
-                var delete_sense = $(event.target);
-                console.log(delete_sense);
-                var delete_sense_id = delete_sense[0]["id"];
-                console.log(delete_sense_id);
-                var type = "POST";
-                var ajaxurl = '/delete-sense-from-entry';
-                $.ajax({
-                    type: type,
-                    url: ajaxurl,
-                    contentType: "application/json",
-                    data: delete_sense_id,
-                    dataType: 'json',
-                    success: function(data) {
-                        console.log("success");
-                        var sense_card = `#sense_card_${delete_sense_id}`
-                        $(sense_card).remove();
-                        console.log(delete_sense_id);
-                    },
-                    error: function(xhr) {
+            //     console.log("button clciked")
+            //     var delete_sense = $(event.target);
+            //     console.log(delete_sense);
+            //     var delete_sense_id = delete_sense[0]["id"];
+            //     console.log(delete_sense_id);
+            //     var type = "POST";
+            //     var ajaxurl = '/delete-sense-from-entry';
+            //     $.ajax({
+            //         type: type,
+            //         url: ajaxurl,
+            //         contentType: "application/json",
+            //         data: delete_sense_id,
+            //         dataType: 'json',
+            //         success: function(data) {
+            //             console.log("success");
+            //             var sense_card = `#sense_card_${delete_sense_id}`
+            //             $(sense_card).remove();
+            //             console.log(delete_sense_id);
+            //         },
+            //         error: function(xhr) {
 
-                        console.log("can't delete sense")
-                        console.log(xhr.status)
-                    }
-                });
+            //             console.log("can't delete sense")
+            //             console.log(xhr.status)
+            //         }
+            //     });
 
-            });
-            // ^ deleting a sense
+            // });
+            // // ^ deleting a sense
 
             $(".add_sense").click(function(event) {
 
@@ -364,3 +364,47 @@ $(".query_leters").click(function(e) {
         }
     });
 });
+////////////////////////////////////////////////////////////////////////////////////////
+// DELETING A SENSE FROM A CARD
+$(".delete_sense").click(function(event) {
+
+    // Set headers.
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        }
+    });
+    event.preventDefault();
+    // get the sorce of the event
+    // i.e., the anchor tags with letters as ther inner html
+
+    console.log("button clciked")
+    var delete_sense = $(event.target);
+    console.log(delete_sense);
+    var delete_sense_id = delete_sense[0]["id"];
+    console.log(delete_sense_id);
+    var type = "POST";
+    var ajaxurl = '/delete-sense-from-entry';
+    $.ajax({
+        type: type,
+        url: ajaxurl,
+        contentType: "application/json",
+        data: delete_sense_id,
+        dataType: 'json',
+        success: function(data) {
+            console.log("success");
+            var sense_card = `#sense_card_${delete_sense_id}`
+            $(sense_card).remove();
+            console.log(delete_sense_id);
+        },
+        error: function(xhr) {
+
+            console.log("can't delete sense")
+            console.log(xhr.status)
+        }
+    });
+
+});
+// ^ deleting a sense
