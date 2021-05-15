@@ -8,13 +8,28 @@
                 {{-- <li class="page-item"><a class="page-link query_leters" href="?limit=50">LIMIT 50</a></li> --}}
                 {{-- <li class="page-item"><button class="page-link query_leters" value="a">ALL</button></li> --}}
 
-                <form action="/query-lexicon-letters" method="POST">
+                {{-- <form action="/query-lexicon-letters" method="POST">
                   <div class="">
+                     {{csrf_field()}}
                      @foreach (['a', 'b', 'k', 'd', 'g', 'h', 'i', 'l', 'm','n', 'p', 'r', 's', 't', 'u', 'w', 'y'] as $item)
-                     <li class="page-item d-inline-block"><a class="page-link query_leters" href="{{$item}}" type="submit" value="{{$item}}">{{$item}}</a></li>
+                     <li class="page-item d-inline-block"><input class="page-link query_leters" type="submit" value="{{$item}}"></li>
                      @endforeach
                   </div>
+               </form> --}}
+               @foreach (['a', 'b', 'k', 'd', 'g', 'h', 'i', 'l', 'm','n', 'p', 'r', 's', 't', 'u', 'w', 'y'] as $item)
+               <div class="">
+
+               <form action="/query-lexicon-letters" method="POST">
+                  {{-- <div class=""> --}}
+                     {{csrf_field()}}
+                     {{-- @foreach (['a', 'b', 'k', 'd', 'g', 'h', 'i', 'l', 'm','n', 'p', 'r', 's', 't', 'u', 'w', 'y'] as $item) --}}
+                     <li class="page-item d-inline-block"><input class="page-link query_leters" name="selected" type="submit" value="{{$item}}"></li>
+                     {{-- @endforeach --}}
+                  {{-- </div> --}}
                </form>
+            </div>
+               @endforeach
+
                 {{-- <li class="page-item"><a class="page-link query_leters" href="a">a</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="b">b</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="k">k</a></li>

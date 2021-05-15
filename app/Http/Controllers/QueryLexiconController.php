@@ -34,20 +34,13 @@ class QueryLexiconController extends Controller
         // The idea here is to get a list of headword entries that start with a given letter, 
         // as chosen by the user from the list of buttons on main lexicon page,
 
-        $letter=$request->getContent(); 
+        // $letter=$request->getContent(); 
+        $letter=$request->input('selected'); 
 
-        $csrf=Session::token();
-        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->paginate();
+        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->simplePaginate(15);
     
-        return  view('lexicon.blade.php');
-    }
-
-    public function pagination(Request $request){
-
-        // The idea here is to get a list of headword entries that start with a given letter, 
-        // as chosen by the user from the list of buttons on main lexicon page,
-
-        return view('lexicon.blade.php');
+        return  view('dashboard.template.lexicon')->with(["headwords"=>$headwords]);
+        // return redirect()->route("display-lexicon")->with(["headwords"=>$headwords]);
 
     }
 
@@ -56,17 +49,18 @@ class QueryLexiconController extends Controller
     public function search(Request $request){
 
         $query_string = $request->input('nav-searchbar'); 
-        $headwords = Headword::where('headword', $query_string)->with('senses')->get();
+        $headwords = Headword::where('headword', $query_string)->with('senses')->orderBy('headword')->simplePaginate(15);
 
         return redirect()->route("display-lexicon")->with(["headwords"=>$headwords]);
     }
 
     public function display_search(){
 
-        // $headwords=Session::get("headwords");
+        $headwords=Session::get("headwords");
+        error_log(serialize($headwords));
         // Session::put("headwords", $headwords);
         // return view('dashboard.template.lexicon-search');
-        return view('dashboard.template.lexicon-search');
+        return view('dashboard.template.lexicon-search')->with(["headwords"=>$headwords]);
 
     }
     // ****************** CREATING A NEW ENTRY ****************** // 

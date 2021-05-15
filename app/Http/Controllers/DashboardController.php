@@ -35,7 +35,7 @@ class DashboardController extends Controller
 
         $letter='a';
 
-        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->paginate();
+        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->simplePaginate(15);
     
         return view("dashboard.template.lexicon")->with(["headwords"=>$headwords]);
 
