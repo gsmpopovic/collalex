@@ -39,7 +39,7 @@ $(".query_leters").click(function(e) {
 
         }
     });
-    e.preventDefault();
+    //e.preventDefault();
 
     // input() in Eloquent API won't work because the buttons aren't inputs/not named. 
 

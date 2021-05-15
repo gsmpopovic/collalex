@@ -48,10 +48,17 @@
 
            <div id="collapse{{ $loop->index }}" class="panel-collapse collapse in">
               <div class="card-body">
-                   <input type="hidden"name="headword-id-input" value="{{$headword->id}}" >
+                   {{-- <input type="hidden"name="headword-id-input" value="{{$headword->id}}" > --}}
                     <div class="row">
                       <div class="col-sm-5">
                          <!-- text input -->
+                         <div class="form-floating mb-3">
+                           <input type="text" class="form-control" name="headword-id-input" value="{{$headword->id}}" readonly>
+                           <label for="floatingInput">Headword ID</label>
+                        </div>
+                     </div>
+                        <div class="col-sm-5">
+
                          <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput"
                                placeholder="Spelling of word" name="headword-input" value="{{$headword->headword}}" required>

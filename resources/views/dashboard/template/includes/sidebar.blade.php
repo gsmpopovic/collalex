@@ -96,6 +96,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('display-sense-create') }}" class="nav-link">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p>
+                            Create Sense Entry 
+                        </p>
+                    </a>
+                </li>
                 </li>
                 {{-- If so and so has the ability to view management routes, i.e., 
                     an admin.

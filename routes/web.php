@@ -59,6 +59,9 @@ Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middl
 Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
 
 Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create')->middleware('auth');
+
+Route::get("/display-lexicon-sense-create", [DashboardController::class, "display_sense_create"])->name('display-sense-create')->middleware('auth');
+
 // Lexicon routes 
 
 Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
@@ -71,6 +74,8 @@ Route::get("/display-searchlexicon", [QueryLexiconController::class, "display_se
 Route::post("/create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry")->middleware('auth');
 
 Route::post("/update-lexicon-entry", [QueryLexiconController::class, "update_entry"])->name("update-entry")->middleware('auth');
+
+Route::post("/create-lexicon-sense-entry", [QueryLexiconController::class, "create_sense_entry"])->name("create-sense-entry")->middleware('auth');
 
 Route::any("/delete-sense-from-entry", [QueryLexiconController::class, "delete_sense"])->name("delete-sense-entry")->middleware('auth');
 

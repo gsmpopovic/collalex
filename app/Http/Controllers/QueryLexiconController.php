@@ -15,6 +15,20 @@ use App\Models\Sense;
 class QueryLexiconController extends Controller
 {
     
+    // public function index(Request $request){
+
+    //     // The idea here is to get a list of headword entries that start with a given letter, 
+    //     // as chosen by the user from the list of buttons on main lexicon page,
+
+    //     $letter=$request->getContent(); 
+
+    //     $csrf=Session::token();
+    //     $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->paginate();
+    
+    //     return Response::json([$headwords, $csrf]);
+
+    // }
+
     public function index(Request $request){
 
         // The idea here is to get a list of headword entries that start with a given letter, 
@@ -25,8 +39,7 @@ class QueryLexiconController extends Controller
         $csrf=Session::token();
         $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->paginate();
     
-        return Response::json([$headwords, $csrf]);
-
+        return  view('lexicon.blade.php');
     }
 
     public function pagination(Request $request){
@@ -93,6 +106,44 @@ class QueryLexiconController extends Controller
 
     }
 
+        // ****************** CREATING A NEW HEADWORD ENTRY ****************** // 
+
+        public function create_sense_entry(Request $request){
+            // Headword fields:
+            //
+            //headword, pronunciation, user, updated/created
+    
+            // inputs:
+    
+            //  headword-input, pronunciation-input, 
+            // dd($request);
+    
+            // sense fields:
+            // syncat, g_eng, g_ceb, semdom_id, user, headword_id
+    
+            // sense inputs: 
+            // semdom-input,eng-input, syncat-input, ceb-input,
+    
+    
+            // $headword = new Headword();
+            // $headword->headword=$request->input('headword-input');
+            // $headword->user=Auth::user()->id;
+            // $headword->save();
+    
+            $sense =new Sense();
+            $sense->headword_id=$request->input('headword-input');
+            $sense->g_eng=$request->input('eng-input');
+            $sense->g_ceb=$request->input('ceb-input');
+            $sense->syncat=$request->input('syncat-input');
+            $sense->semdom_id=$request->input('semdom-input');
+            $sense->user=Auth::user()->id;
+    
+            $sense->save();
+            
+            return back();
+    
+        }
+
     // ****************** UPDATING AN ENTRY ****************** // 
 
     public function update_entry(Request $request){
@@ -102,13 +153,13 @@ class QueryLexiconController extends Controller
 
         // inputs:
 
-        //  headword-input, pronunciation-input, 
+        //  headword-input, pronunciation-input,
         // dd($request);
 
         // sense fields:
         // syncat, g_eng, g_ceb, semdom_id, user, headword_id
 
-        // sense inputs: 
+        // sense inputs:
         // semdom-input,eng-input, syncat-input, ceb-input,
 
         
@@ -118,23 +169,43 @@ class QueryLexiconController extends Controller
         $headword->pronunciation=$request->input('pronunciation-input');
         $headword->user=Auth::user()->id;
         $headword->save();
+
+        error_log($sense_id=$request->input('sense-id-input'));
         // error_log($headword);
-        $sense_id=$request->input('sense-id-input');
-        // error_log(serialize($request->all()));
-
-        // $sense=Sense::where('headword_id', '=', $headword_id)->first(); 
-        // $sense=Sense::find( $sense_id)->first(); 
-        $sense=Sense::where('id', '=', $sense_id)->first(); 
-
+        foreach($sense_id=$request->input('sense-id-input') as $item){
+        // error_log(serialize($sense_id));
+        
+        // $sense=Sense::where('headword_id', '=', $headword_id)->first();
+        // $sense=Sense::find( $sense_id)->first();
+        $sense=Sense::where('id', '=', $sense_id)->first();
+        
         // error_log(serialize($sense));
-
+        
         $sense->g_eng=$request->input('eng-input');
         $sense->g_ceb=$request->input('ceb-input');
         $sense->syncat=$request->input('syncat-input');
         $sense->semdom_id=$request->input('semdom-input');
         $sense->user=Auth::user()->id;
-
+        
         $sense->save();
+    }        
+        // // error_log($headword);
+        // $sense_id=$request->input('sense-id-input');
+        // // error_log(serialize($request->all()));
+
+        // // $sense=Sense::where('headword_id', '=', $headword_id)->first(); 
+        // // $sense=Sense::find( $sense_id)->first(); 
+        // $sense=Sense::where('id', '=', $sense_id)->first(); 
+
+        // // error_log(serialize($sense));
+
+        // $sense->g_eng=$request->input('eng-input');
+        // $sense->g_ceb=$request->input('ceb-input');
+        // $sense->syncat=$request->input('syncat-input');
+        // $sense->semdom_id=$request->input('semdom-input');
+        // $sense->user=Auth::user()->id;
+
+        // $sense->save();
         
         return back();
 

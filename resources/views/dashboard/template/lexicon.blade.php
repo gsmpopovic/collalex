@@ -3,10 +3,19 @@
     <div class="row">
         <nav aria-label="alphabet" class="navbar navbar-expand-sm">
             <ul class="pagination justify-content-center">
+               {{-- ['a', 'b', 'k', 'd', 'g', 'h', 'i', 'l', 'm'. 'n', 'p', 'r', 's', 't'. 'u', 'w', 'y'] --}}
                 {{-- <li class="page-item disabled"><a class="page-link query_leters" href="#" tabindex="-1">FILTER</a></li> --}}
                 {{-- <li class="page-item"><a class="page-link query_leters" href="?limit=50">LIMIT 50</a></li> --}}
                 {{-- <li class="page-item"><button class="page-link query_leters" value="a">ALL</button></li> --}}
-                <li class="page-item"><a class="page-link query_leters" href="a">a</a></li>
+
+                <form action="/query-lexicon-letters" method="POST">
+                  <div class="">
+                     @foreach (['a', 'b', 'k', 'd', 'g', 'h', 'i', 'l', 'm','n', 'p', 'r', 's', 't', 'u', 'w', 'y'] as $item)
+                     <li class="page-item d-inline-block"><a class="page-link query_leters" href="{{$item}}" type="submit" value="{{$item}}">{{$item}}</a></li>
+                     @endforeach
+                  </div>
+               </form>
+                {{-- <li class="page-item"><a class="page-link query_leters" href="a">a</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="b">b</a></li>
                 <li class="page-item"><a class="page-link query_leters" href="k">k</a></li>
                 <li class="page-item"><a class="page-link query_leters query_leters" href="d">d</a></li>
@@ -22,7 +31,7 @@
                 <li class="page-item "><a class="page-link query_leters" href="t">t</a></li>
                 <li class="page-item "><a class="page-link query_leters" href="u">u</a></li>
                 <li class="page-item "><a class="page-link query_leters" href="w">w</a></li>
-                <li class="page-item "><a class="page-link query_leters" href="y">y</a></li>
+                <li class="page-item "><a class="page-link query_leters" href="y">y</a></li> --}}
             </ul>
         </nav>
     </div>
@@ -48,8 +57,15 @@
 
            <div id="collapse{{ $loop->index }}" class="panel-collapse collapse in">
               <div class="card-body">
-                   <input type="hidden"name="headword-id-input" value="{{$headword->id}}" >
+                   {{-- <input type="hidden"name="headword-id-input" value="{{$headword->id}}" > --}}
                     <div class="row">
+                     <div class="col-sm-5">
+                        <!-- text input -->
+                        <div class="form-floating mb-3">
+                          <input type="text" class="form-control" name="headword-id-input" value="{{$headword->id}}" readonly>
+                          <label for="floatingInput">Headword ID</label>
+                       </div>
+                    </div>
                       <div class="col-sm-5">
                          <!-- text input -->
                          <div class="form-floating mb-3">
@@ -89,8 +105,8 @@
                                                              <div class="row g-2">
                                                                 <div class="col-sm-3">
                                                                    <div class="form-floating">
-                                                                   <input type="hidden"name="sense-id-input" value="{{$sense->id}}">
-                                                                      <select class="form-select" id="floatingSelectGrid" name="syncat-input"
+                                                                   <input type="text"name="sense-id-input" value="{{$sense->id}}" readonly>
+                                                                      <select class="form-select" id="floatingSelectGrid" name="syncat-input[]"
                                                                          aria-label="Floating label select example">
                                                                          <option value="{{$sense->syncat}}">{{$sense->syncat}}</option>
                                                                          <option value="noun">noun</option>
@@ -104,21 +120,21 @@
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                   <div class="form-floating mb-3">
-                                                                     <input type="text" class="form-control" id="floatingInput" name="semdom-input"
+                                                                     <input type="text" class="form-control" id="floatingInput" name="semdom-input[]"
                                                                         placeholder="Semdom ID" value="{{$sense->semdom_id}}">
                                                                      <label for="floatingInput">Semantic Domain</label>
                                                                   </div>
                                                                </div>
                                                                 <div class="col-sm-3">
                                                                    <div class="form-floating mb-3">
-                                                                      <input type="text" class="form-control" id="floatingInput" name="eng-input"
+                                                                      <input type="text" class="form-control" id="floatingInput" name="eng-input[]"
                                                                          placeholder="English Translation" value="{{$sense->g_eng}}">
                                                                       <label for="floatingInput">English gloss</label>
                                                                    </div>
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                    <div class="form-floating mb-3">
-                                                                      <input type="text" class="form-control" id="floatingInput" name="ceb-input"
+                                                                      <input type="text" class="form-control" id="floatingInput" name="ceb-input[]"
                                                                          placeholder="Cebuano Translation" value="{{$sense->g_ceb}}">
                                                                       <label for="floatingInput">Cebuano gloss</label>
                                                                    </div>
@@ -182,6 +198,13 @@
                        {{ csrf_field() }}
      
                         <div class="row">
+                           {{-- <div class="col-sm-5">
+                              <!-- text input -->
+                              <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="headword-id-input" value="{{$headword->id}}" readonly>
+                                <label for="floatingInput">Headword ID</label>
+                             </div>
+                          </div> --}}
                           <div class="col-sm-5">
                              <!-- text input -->
                              <div class="form-floating mb-3">
@@ -289,5 +312,5 @@
 @endsection
 
 @section('ajax')
-<script src="{{asset('assets/js/lexicon_ajax.js')}}"></script>
+{{-- <script src="{{asset('assets/js/lexicon_ajax.js')}}"></script> --}}
 @append

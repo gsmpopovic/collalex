@@ -45,4 +45,9 @@ class DashboardController extends Controller
     public function display_create(){
         return view("dashboard.template.lexicon-create");
     }
+
+    
+    public function display_sense_create(){
+        return view("dashboard.template.lexicon-create-sense");
+    }
 }
