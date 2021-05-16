@@ -37,10 +37,16 @@ class QueryLexiconController extends Controller
         // $letter=$request->getContent(); 
         $letter=$request->input('selected'); 
 
-        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->simplePaginate(15);
+        // dd($request->all());
+        $headwords = Headword::where('headword', 'LIKE', $letter.'%')
+        ->with('senses')
+        ->orderBy('headword')->simplePaginate(15);
     
-        return  view('dashboard.template.lexicon')->with(["headwords"=>$headwords]);
-        // return redirect()->route("display-lexicon")->with(["headwords"=>$headwords]);
+        // $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->simplePaginate(15);
+    
+    // return  view('dashboard.template.lexicon')->with(["headwords"=>$headwords]);
+        
+        return redirect()->route("display-lexicon")->with(["headwords"=>$headwords]);
 
     }
 
@@ -56,11 +62,11 @@ class QueryLexiconController extends Controller
 
     public function display_search(){
 
-        $headwords=Session::get("headwords");
-        error_log(serialize($headwords));
+        // $headwords=Session::get("headwords");
+        // error_log(serialize($headwords));
         // Session::put("headwords", $headwords);
-        // return view('dashboard.template.lexicon-search');
-        return view('dashboard.template.lexicon-search')->with(["headwords"=>$headwords]);
+        return view('dashboard.template.lexicon-search');
+        // return view('dashboard.template.lexicon-search')->with(["headwords"=>$headwords]);
 
     }
     // ****************** CREATING A NEW ENTRY ****************** // 
@@ -102,7 +108,7 @@ class QueryLexiconController extends Controller
 
     }
 
-        // ****************** CREATING A NEW HEADWORD ENTRY ****************** // 
+        // ****************** CREATING A NEW SENSE ENTRY ****************** // 
 
         public function create_sense_entry(Request $request){
             // Headword fields:

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Collalex</title>
     @include("dashboard.template.includes.meta")
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">

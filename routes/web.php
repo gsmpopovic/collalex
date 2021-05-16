@@ -64,7 +64,7 @@ Route::get("/display-lexicon-sense-create", [DashboardController::class, "displa
 
 // Lexicon routes 
 
-Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
+Route::post("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
 
 Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon")->middleware('auth');
 
