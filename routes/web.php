@@ -57,6 +57,7 @@ Route::get("/dictionary", [DictionaryController::class, "index"])->name("diction
 
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
 Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
+Route::get("/cdash/lexicon/{query}", [DashboardController::class, "lexicon_query_letter"])->name("lexicon_query_letter")->middleware('auth');
 
 Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create')->middleware('auth');
 
@@ -64,7 +65,7 @@ Route::get("/display-lexicon-sense-create", [DashboardController::class, "displa
 
 // Lexicon routes 
 
-Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
+// Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
 
 Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon")->middleware('auth');
 
@@ -78,7 +79,7 @@ Route::post("/update-lexicon-entry", [QueryLexiconController::class, "update_ent
 
 Route::post("/create-lexicon-sense-entry", [QueryLexiconController::class, "create_sense_entry"])->name("create-sense-entry")->middleware('auth');
 
-Route::any("/delete-sense-from-entry", [QueryLexiconController::class, "delete_sense"])->name("delete-sense-entry")->middleware('auth');
+Route::post("/delete-sense-from-entry", [QueryLexiconController::class, "delete_sense"])->name("delete-sense-entry")->middleware('auth');
 
 
 // RBAC managed by Laratrust; edited from vendor package Laratrust.

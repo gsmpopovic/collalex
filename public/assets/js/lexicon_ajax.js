@@ -159,7 +159,7 @@ $(".add_sense").click(function(event) {
 
 var create_headword = $("#create_headword");
 create_headword.click(function(e) {
-    e.preventDefault();
+    //  e.preventDefault();
 
     // Set headers.
 
