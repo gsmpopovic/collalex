@@ -70,6 +70,8 @@ Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name(
 
 Route::get("/display-searchlexicon", [QueryLexiconController::class, "display_search"])->name("display-lexicon")->middleware('auth');
 
+Route::post("/validate-lexicon-entry", [QueryLexiconController::class, "validate_entry"])->name("validate-entry")->middleware('auth');
+
 Route::post("/create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry")->middleware('auth');
 
 Route::post("/update-lexicon-entry", [QueryLexiconController::class, "update_entry"])->name("update-entry")->middleware('auth');

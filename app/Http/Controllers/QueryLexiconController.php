@@ -69,6 +69,30 @@ class QueryLexiconController extends Controller
         // return view('dashboard.template.lexicon-search')->with(["headwords"=>$headwords]);
 
     }
+
+        // ****************** VALIDATE HEADWORD ****************** // 
+
+    public function validate_entry(Request $request){
+        $headword=$request->getContent();
+
+        $headword_inst = Headword::where('headword', '=', $headword)->first();
+
+        if($headword_inst){
+            
+        error_log("***********************************");
+        error_log("***********************************");
+        error_log("***********************************");
+        error_log("***********************************");
+        error_log("***********************************");
+        error_log("***********************************");
+            return Response::json(["error"=>"Duplicate headword!"]);
+        }
+
+        else{
+            return Response::json(["success"=>"That isn't already in the database!"]);
+        }
+
+    }
     // ****************** CREATING A NEW ENTRY ****************** // 
 
     public function create_entry(Request $request){
