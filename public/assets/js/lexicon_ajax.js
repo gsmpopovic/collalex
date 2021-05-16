@@ -159,6 +159,7 @@ $(".add_sense").click(function(event) {
 
 var create_headword = $("#create_headword");
 create_headword.click(function(e) {
+    e.preventDefault();
 
     // Set headers.
 
@@ -183,13 +184,11 @@ create_headword.click(function(e) {
 
                 alert("That's already in the database!");
 
-                e.preventDefault();
-
             }
         },
         error: function(xhr) {
-            console.log("error")
-            console.log(xhr.status)
+            // console.log("error")
+            // console.log(xhr.status)
         }
     });
 });

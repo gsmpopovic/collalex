@@ -78,13 +78,7 @@ class QueryLexiconController extends Controller
         $headword_inst = Headword::where('headword', '=', $headword)->first();
 
         if($headword_inst){
-            
-        error_log("***********************************");
-        error_log("***********************************");
-        error_log("***********************************");
-        error_log("***********************************");
-        error_log("***********************************");
-        error_log("***********************************");
+
             return Response::json(["error"=>"Duplicate headword!"]);
         }
 

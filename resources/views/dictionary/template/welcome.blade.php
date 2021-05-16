@@ -2,14 +2,9 @@
 @section("content")
 <header>
     <div class="title">
-        <h2><a href="#">Welcome Page</a></h2>
-        <p>subtitle</p>
+        <h2><a href="#">The Bantayanon Language Project</a></h2>
     </div>
     <div class="meta">
-        <time class="published" datetime="2020-07-10">July 10, 2020 </time>
-        <a href="#" class="author">
-            <span class="name"><strong>Arthur E. Despi</strong><br>Mayor, Bantayan</span>
-            <img src="_assets/images/art-36.png" alt="" /></a>
     </div>
 </header>
 <div class="row">
