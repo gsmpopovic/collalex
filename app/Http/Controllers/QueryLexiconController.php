@@ -79,6 +79,8 @@ class QueryLexiconController extends Controller
             $headword->headword=$request->input('headword-input');
             $headword->pronunciation=$request->input('pronunciation-input');
             $headword->user=Auth::user()->id;
+            $headword->vulgarity=$request->input('vulgar');
+
             $headword->save();
 
             // error_log(serialize($headword));
@@ -123,6 +125,8 @@ class QueryLexiconController extends Controller
         $headword = Headword::where('id', '=', $headword_id)->first();
         $headword->headword=$request->input('headword-input');
         $headword->pronunciation=$request->input('pronunciation-input');
+        $headword->vulgarity=$request->input('vulgar');
+
         $headword->user=Auth::user()->id;
         $headword->save();
 
@@ -142,7 +146,11 @@ class QueryLexiconController extends Controller
             }
 
         }
-        return back();
+        // return back();
+
+        //get the first letter and return to that section
+        $query=$request->input('headword-input')[0];
+        return redirect()->route("lexicon_query_letter", $query);
     }
 
     // ****************** DELETING SENSE FROM AN ENTRY ****************** //

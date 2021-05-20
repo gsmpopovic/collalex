@@ -20,6 +20,13 @@
                   {{ csrf_field() }}
 
                    <div class="row">
+                     <div class="col-sm-2">
+                        <div class="custom-control custom-checkbox">
+                           <input type="hidden" name="vulgar" value="0">
+                          <input class="custom-control-input" type="checkbox" name="vulgar" id="customCheckbox1" value="1">
+                          <label for="customCheckbox1" class="custom-control-label">vulgar</label><br>
+                        </div>
+                      </div>
                      <div class="col-sm-5">
                         <!-- text input -->
                         <div class="form-floating mb-3">

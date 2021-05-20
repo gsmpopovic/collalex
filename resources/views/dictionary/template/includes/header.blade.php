@@ -6,7 +6,7 @@
                     {{-- <li><a href="{{route('about')}}">About</a></li>
                     <li><a href="{{route('language')}}">The Bantayanon Language</a></li>
                     <li><a href="{{route('facesandvoices')}}">Faces & Voices</a></li> --}}
-                    <li><a href="{{route('dictionary')}}">Dictionary</a></li>
+                    {{-- <li><a href="{{route('dictionary')}}">Dictionary</a></li> --}}
                     {{-- <li><a href="{{route('contribute')}}">Contribute</a></li> --}}
                 </ul>
             </nav>
@@ -54,9 +54,9 @@
                         </a>
                     </li> --}}
                     <li>
-                        <a href="{{route('dictionary')}}">
+                        {{-- <a href="{{route('dictionary')}}">
                             <h3>Dictionary</h3>
-                        </a>
+                        </a> --}}
                     </li>
                     {{-- <li>
                         <a href="{{route('contribute')}}">

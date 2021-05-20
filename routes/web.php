@@ -49,7 +49,7 @@ Route::get("/", [WelcomeController::class, "index"]);
 
 
 
-Route::get("/dictionary", [DictionaryController::class, "index"])->name("dictionary");
+// Route::get("/dictionary", [DictionaryController::class, "index"])->name("dictionary");
 
 // Route::get('/cdash/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 /****************************************************************** */ 
@@ -96,4 +96,4 @@ Route::post("/delete-sense-from-entry", [QueryLexiconController::class, "delete_
 /****************************************************************** */
 
 // Public Dictionary Routes
-Route::post('/public-dictionary', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');
+// Route::post('/public-dictionary', [QueryPublicDictionaryController::class, 'index'])->name('querypubdict');

@@ -57,7 +57,8 @@ class Headword extends Model
 		'validity',
 		'loan_lg',
 		'loan_lx',
-		'seealso'
+		'seealso', 
+		'vulgarity'
 	];
 
 	protected static $logAttributes = [		
@@ -66,6 +67,7 @@ class Headword extends Model
 	'user',
 	'date',
 	'validity',
+	'vulgarity'
 ];
 
 	// protected static $logAttributes = [		

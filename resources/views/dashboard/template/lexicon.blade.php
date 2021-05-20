@@ -23,13 +23,14 @@
                </a>
              </h4>
            </div>
-           <form role="form" method="POST" action="../update-lexicon-entry">
+           <form role="form" method="POST" action="{{route('update-entry')}}">
            <input type="hidden" name="_token" value="{{csrf_token()}}">
 
            <div id="collapse{{ $loop->index }}" class="panel-collapse collapse in">
               <div class="card-body">
                    {{-- <input type="hidden"name="headword-id-input" value="{{$headword->id}}" > --}}
                     <div class="row">
+
                      <div class="col-sm-5">
                         <!-- text input -->
                         <div class="form-floating mb-3">
@@ -44,6 +45,13 @@
                                placeholder="Spelling of word" name="headword-input" value="{{$headword->headword}}" required>
                             <label for="floatingInput">Headword</label>
                          </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div class="custom-control custom-checkbox">
+                           <input type="hidden" name="vulgar" value="0">
+                           <input class="custom-control-input" type="checkbox" name="vulgar" id="customCheckbox1" value="1" {{ $headword->vulgarity == 1 ? 'checked' : ''}}>
+                           <label for="customCheckbox1" class="custom-control-label">vulgar</label><br>
+                        </div>
                       </div>
                        <div class="col-sm-5">
                           <!-- text input -->
