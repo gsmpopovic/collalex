@@ -44,6 +44,9 @@ class Semdom extends Model
 		'sd_eng'
 	];
 
+		// Only log those attributes which have been changed.
+		protected static $logOnlyDirty = true;
+
 	public function senses(){
 		// return$this->belongsToMany('App\Models\Sense', 'semdom_id');
 

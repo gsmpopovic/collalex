@@ -62,16 +62,24 @@ class Headword extends Model
 
 	protected static $logAttributes = [		
 	'headword',
-	'entry',
-	'derivation',
 	'pronunciation',
-	'comments',
 	'user',
 	'date',
 	'validity',
-	'loan_lg',
-	'loan_lx',
-	'seealso'];
+];
+
+	// protected static $logAttributes = [		
+	// 	'headword',
+	// 	'entry',
+	// 	'derivation',
+	// 	'pronunciation',
+	// 	'comments',
+	// 	'user',
+	// 	'date',
+	// 	'validity',
+	// 	'loan_lg',
+	// 	'loan_lx',
+	// 	'seealso'];
 
 		// Only log those attributes which have been changed.
 
