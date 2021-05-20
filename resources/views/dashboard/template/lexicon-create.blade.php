@@ -8,13 +8,13 @@
           <div class="card-header">
 
              <h4 class="card-title">
-               <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                  Create an entry
+               <a data-toggle="" data-parent="#accordion" href="#collapseOne">
+                  Create a headword
                </a>
             </h4>
           </div>
           <form role="form" method="POST" action="{{route("create-entry")}}">
-          <div id="collapseOne" class="panel-collapse collapse in">
+          <div id="collapseOne" class="">
              <div class="card-body">
                 {{-- <form role="form" method="POST" action="{{route("create-entry")}}"> --}}
                   {{ csrf_field() }}
@@ -41,12 +41,12 @@
                 <!-- START SENSE CARD -->
                 <div class="row">
                    <div class="col-md-12">
-                      <div class="card card-info card-outline collapsed-card">
+                      <div class="card card-info card-outline">
                          <div class="card-header">
                             <h3 class="card-title">Sense:
                             </h3>
                             <div class="card-tools">
-                               <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                               <button type="button" class="btn btn-tool" data-card-widget=""><i
                                   class="fas fa-plus"></i></button>
                             </div>
                             <!-- /.card-tools -->
@@ -97,12 +97,12 @@
                          <div class="card-footer p-0">
                             <div class="mailbox-controls">
                                <div class="btn-group">
-                                  <button type="button" class="btn btn-default btn-sm"><i
-                                     class="far fa-trash-alt"></i>delete</button>
+                                  {{-- <button type="button" class="btn btn-default btn-sm"><i
+                                     class="far fa-trash-alt"></i>delete</button> --}}
                                </div>
                                <!-- /.btn-group -->
-                               <button type="button" class="btn btn-default btn-sm"><i
-                                  class="fas fa-sync-alt"></i></button>
+                               {{-- <button type="button" class="btn btn-default btn-sm"><i
+                                  class="fas fa-sync-alt"></i></button> --}}
                             </div>
                          </div>
                       </div>

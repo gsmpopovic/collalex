@@ -35,7 +35,7 @@ class QueryLexiconController extends Controller
     public function search(Request $request)
     {
         $query_string = $request->input('nav-searchbar');
-        $headwords = Headword::where('headword', $query_string)->with('senses')->orderBy('headword')->simplePaginate(15);
+        $headwords = Headword::where('headword', $query_string)->with('senses')->orderBy('headword')->paginate(15);
 
         return redirect()->route("display-lexicon")->with(["headwords"=>$headwords]);
     }
@@ -127,15 +127,20 @@ class QueryLexiconController extends Controller
         $headword->save();
 
         // this will cycle through the arrays of inputs.
-        foreach ($request->sense_id_input as $k => $sense_id) {
-            $sense=Sense::where('id', '=', $sense_id)->first();
-            $sense->g_eng=$request->input('eng-input')[$k];
-            $sense->g_ceb=$request->input('ceb-input')[$k];
-            $sense->syncat=$request->input('syncat-input')[$k];
-            $sense->semdom_id=$request->input('semdom-input')[$k];
-            $sense->user=Auth::user()->id;
-            
-            $sense->save();
+
+        if($request->sense_id_input ){
+
+            foreach ($request->sense_id_input as $k => $sense_id) {
+                $sense=Sense::where('id', '=', $sense_id)->first();
+                $sense->g_eng=$request->input('eng-input')[$k];
+                $sense->g_ceb=$request->input('ceb-input')[$k];
+                $sense->syncat=$request->input('syncat-input')[$k];
+                $sense->semdom_id=$request->input('semdom-input')[$k];
+                $sense->user=Auth::user()->id;
+                
+                $sense->save();
+            }
+
         }
         return back();
     }
@@ -145,19 +150,17 @@ class QueryLexiconController extends Controller
     public function delete_sense(Request $request)
     {
 
-        $sense_id=$request->getContent();
+        // $sense_id=$request->getContent();
 
-        $sense=Sense::where('id', '=', $sense_id)->first();
-        error_log(serialize($sense_id));
+        // $sense=Sense::where('id', '=', $sense_id)->first();
 
-        error_log(serialize($sense));
 
-        if ($sense) {
-            $sense->delete();
-            return Response::json(["OK"]);
-        } else {
-            return Response::json(["NOT OK"]);
-        }
+        // if ($sense) {
+        //     $sense->delete();
+        //     return Response::json(["OK"]);
+        // } else {
+        //     return Response::json(["NOT OK"]);
+        // }
     }
 }
 

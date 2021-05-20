@@ -30,7 +30,7 @@ class DashboardController extends Controller
 
         $letter='a';
 
-        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->simplePaginate(15);
+        $headwords = Headword::where('headword', 'LIKE', $letter.'%')->with('senses')->orderBy('headword')->paginate(15);
     
         return view("dashboard.template.lexicon")->with(["headwords"=>$headwords]);
 
@@ -42,7 +42,7 @@ class DashboardController extends Controller
         // The idea here is to get a list of headword entries that start with a given letter, 
         // as chosen by the user from the list of buttons on main lexicon page,
 
-        $headwords = Headword::where('headword', 'LIKE', $query.'%')->with('senses')->orderBy('headword')->simplePaginate(15);
+        $headwords = Headword::where('headword', 'LIKE', $query.'%')->with('senses')->orderBy('headword')->paginate(15);
     
         return view("dashboard.template.lexicon")->with(["headwords"=>$headwords]);
 

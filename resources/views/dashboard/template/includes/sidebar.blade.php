@@ -92,7 +92,7 @@
                     <a href="{{ route('display-create') }}" class="nav-link">
                         <i class="nav-icon fas fa-book-open"></i>
                         <p>
-                            Create Headword Entry 
+                            Create Entry 
                         </p>
                     </a>
                 </li>
@@ -100,7 +100,7 @@
                     <a href="{{ route('display-sense-create') }}" class="nav-link">
                         <i class="nav-icon fas fa-book-open"></i>
                         <p>
-                            Create Sense Entry 
+                            Create Sense 
                         </p>
                     </a>
                 </li>

@@ -112,12 +112,12 @@
                                                        <div class="card-footer p-0">
                                                           <div class="mailbox-controls">
                                                              <div class="btn-group">
-                                                                <button type="button" value="delete" class="btn btn-default btn-sm delete_sense" id="{{$sense->id}}"><i
-                                                                   class="far fa-trash-alt delete_sense"></i>delete</button>
+                                                                {{-- <button type="button" value="delete" class="btn btn-default btn-sm delete_sense" id="{{$sense->id}}"><i
+                                                                   class="far fa-trash-alt delete_sense"></i>delete</button> --}}
                                                              </div>
                                                              <!-- /.btn-group -->
-                                                             <button type="button" class="btn btn-default btn-sm"><i
-                                                                class="fas fa-sync-alt"></i></button>
+                                                             {{-- <button type="button" class="btn btn-default btn-sm"><i
+                                                                class="fas fa-sync-alt"></i></button> --}}
                                                           </div>
                                                        </div>
                                                     </div>
