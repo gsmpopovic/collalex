@@ -13,9 +13,13 @@
            <div class="card-header">
  
               <h4 class="card-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $loop->index }}">
-                   {{$headword->headword}}
-                </a>
+               <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $loop->index }}">
+                  <strong>{{$headword->headword}}</strong> [{{$headword->pronunciation}}]
+                  @foreach ($headword->senses as $sense)
+                  <em>({{ $loop->index+1 }})</em>
+                  <em>{{$sense->syncat}}</em> <sub>ENG</sub> [{{$sense->g_eng}}], <sub>CEB</sub> [{{$sense->g_ceb}}]
+                  @endforeach
+               </a>
              </h4>
            </div>
            <form role="form" method="POST" action="../update-lexicon-entry">
