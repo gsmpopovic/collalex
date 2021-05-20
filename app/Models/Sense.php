@@ -74,6 +74,30 @@ class Sense extends Model
 		'seealso'
 	];
 
+	protected static $logAttributes = [		
+		'headword_id',
+		'syncat',
+		'g_eng',
+		'g_ceb',
+		'g_hil',
+		'g_tgl',
+		'd_eng',
+		'd_ceb',
+		'd_hil',
+		'd_tgl',
+		'semdom_id',
+		'semdom_other',
+		'comments',
+		'user',
+		'date',
+		'validity',
+		'seealso'
+	];
+
+	// Only log those attributes which have been changed.
+	protected static $logOnlyDirty = true;
+
+
 	// protected $fillable = [
 	// 	'id',
 	// 	'headword_id',

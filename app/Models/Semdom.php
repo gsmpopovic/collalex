@@ -38,6 +38,12 @@ class Semdom extends Model
 		'sd_eng'
 	];
 
+	protected static $logAttributes = [		
+		'id',
+		'is_eng',
+		'sd_eng'
+	];
+
 	public function senses(){
 		// return$this->belongsToMany('App\Models\Sense', 'semdom_id');
 

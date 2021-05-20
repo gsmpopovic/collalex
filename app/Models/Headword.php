@@ -60,6 +60,23 @@ class Headword extends Model
 		'seealso'
 	];
 
+	protected static $logAttributes = [		
+	'headword',
+	'entry',
+	'derivation',
+	'pronunciation',
+	'comments',
+	'user',
+	'date',
+	'validity',
+	'loan_lg',
+	'loan_lx',
+	'seealso'];
+
+		// Only log those attributes which have been changed.
+
+    protected static $logOnlyDirty = true;
+
 	// Return the senses associated with each headword; refer. on headword id.
 	public function senses(){
 		return $this->hasMany('App\Models\Sense', 'headword_id');
