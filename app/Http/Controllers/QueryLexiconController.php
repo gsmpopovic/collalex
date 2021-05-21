@@ -34,7 +34,11 @@ class QueryLexiconController extends Controller
 
     public function search(Request $request)
     {
-        $query_string = $request->input('nav-searchbar');
+        // $query_string = $request->input('nav-searchbar');
+        $query_string = $request->validate([
+            'nav-searchbar' => 'alpha'        
+            ]);
+
         $headwords = Headword::where('headword', $query_string)->with('senses')->orderBy('headword')->paginate(15);
 
         return redirect()->route("display-lexicon")->with(["headwords"=>$headwords]);
@@ -68,7 +72,15 @@ class QueryLexiconController extends Controller
 
     public function create_entry(Request $request)
     {
+
+        $headword_valid= $request->validate([
+            'headword-input' => 'alpha',
+            'pronunciation-input'=>'alpha',
+            'headword-input' => 'unique:headwords,headword'
+            ]);
+
         $headword=$request->input('headword-input');
+
         $headword_inst = Headword::where('headword', '=', $headword)->first();
 
         if ($headword_inst) {
@@ -84,6 +96,12 @@ class QueryLexiconController extends Controller
             $headword->save();
 
             // error_log(serialize($headword));
+
+            $sense_valid= $request->validate([
+                'eng-input' => 'alpha',
+                'ceb-input'=>'alpha' 
+                ]);
+
             $sense =new Sense();
             $sense->headword_id=$headword->id;
             $sense->g_eng=$request->input('eng-input');
@@ -103,6 +121,12 @@ class QueryLexiconController extends Controller
     public function create_sense_entry(Request $request)
     {
 
+        $sense_valid= $request->validate([
+            'headword-input' => 'numeric',
+            'eng-input' => 'alpha',
+            'ceb-input'=>'alpha' 
+            ]);
+
         $sense =new Sense();
         $sense->headword_id=$request->input('headword-input');
         $sense->g_eng=$request->input('eng-input');
@@ -120,7 +144,12 @@ class QueryLexiconController extends Controller
 
     public function update_entry(Request $request)
     {
-        
+                $headword_valid= $request->validate([
+            'headword-input' => 'alpha',
+            'pronunciation-input'=>'alpha' 
+
+            ]);
+
         $headword_id=$request->input('headword-id-input');
         $headword = Headword::where('id', '=', $headword_id)->first();
         $headword->headword=$request->input('headword-input');
@@ -133,6 +162,19 @@ class QueryLexiconController extends Controller
         // this will cycle through the arrays of inputs.
 
         if($request->sense_id_input ){
+
+            // $sense_valid= $request->validate([
+            //     'headword-input' => 'alpha',
+            //     'eng-input' => 'alpha',
+            //     'ceb-input'=>'alpha' 
+            //     ]);
+
+            // validate the values in each sense card as arrays
+            $this->validate($request, [
+                'eng-input.*' => 'alpha',
+                'ceb-input.*'=>'alpha' 
+            ]);
+            
 
             foreach ($request->sense_id_input as $k => $sense_id) {
                 $sense=Sense::where('id', '=', $sense_id)->first();

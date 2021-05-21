@@ -179,7 +179,7 @@ create_headword.click(function(e) {
         dataType: 'json',
         success: function(data) {
             if (data.success) {
-                alert("Successful submission");
+                alert("That's a new headword! Yay!");
             } else if (data.error) {
 
                 alert("That's already in the database!");
