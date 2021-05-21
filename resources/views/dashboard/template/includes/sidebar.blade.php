@@ -127,7 +127,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="cdash/management/rbac" class="nav-link">
+                    <a href="{{route('dash')}}/management/rbac" class="nav-link">
+                        {{-- <a href="/cdash/management/rbac" class="nav-link"> --}}
+
+                    {{-- <a href="{!! route(config('laratrust.path')) !!}" class="nav-link"> --}}
                         <i class="nav-icon fas fa-address-book"></i>
                         <p>
                             RBAC Panel
