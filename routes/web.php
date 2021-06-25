@@ -62,6 +62,7 @@ Route::get("/cdash/lexicon/{query}", [DashboardController::class, "lexicon_query
 Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create')->middleware('auth');
 
 Route::get("/display-lexicon-sense-create", [DashboardController::class, "display_sense_create"])->name('display-sense-create')->middleware('auth');
+Route::get("/changelog", [DashboardController::class, "display_changelog"])->name('display-changelog')->middleware('auth');
 
 // Lexicon routes 
 

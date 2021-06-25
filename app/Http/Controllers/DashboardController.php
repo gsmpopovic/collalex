@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Headword as Headword;
 
 use App\Models\Sense;
+use Illuminate\Support\Facades\DB;
+
 
 class DashboardController extends Controller
 {
@@ -56,5 +58,12 @@ class DashboardController extends Controller
     
     public function display_sense_create(){
         return view("dashboard.template.lexicon-create-sense");
+    }
+
+    public function display_changelog(){
+        $updated = DB::table("activity_log")->where('description', '=', 'updated')->latest()->get();
+        $created = DB::table("activity_log")->where('description', '=', 'created')->latest()->get();
+
+        return view("dashboard.template.changelog", ["updated"=>$updated, "created"=>$created]);
     }
 }
