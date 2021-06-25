@@ -34,11 +34,11 @@ use App\Http\Controllers\QueryLexiconController;
 
 // Auth::routes();
 Route::prefix('/cdash/management')->group(function(){
-Auth::routes([
-    'register' => true,
-    'verify' => true,
-    'reset' => false
-]);
+  Auth::routes([
+      'register' => true,
+      'verify' => true,
+      'reset' => false
+  ]);
 
 }); 
 
@@ -51,16 +51,17 @@ Route::get("/", [WelcomeController::class, "index"]);
 // Route::get("/dictionary", [DictionaryController::class, "index"])->name("dictionary");
 // Route::get('/cdash/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 /****************************************************************** */ 
-// Dashboard routes 
+// Dashboard routes
 
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
-Route::get("/cdash/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
-Route::get("/cdash/lexicon/{query}", [DashboardController::class, "lexicon_query_letter"])->name("lexicon_query_letter")->middleware('auth');
-Route::get("/cdash/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create')->middleware('auth');
-Route::get("/cdash/display-lexicon-sense-create", [DashboardController::class, "display_sense_create"])->name('display-sense-create')->middleware('auth');
-Route::get("/cdash/management/changelog", [DashboardController::class, "display_changelog"])->name('display-changelog')->middleware('auth');
-Route::get("/cdash/management/users", [DashboardController::class, "display_users"])->name('display-users')->middleware('auth');
-
+  Route::prefix('/cdash')->group(function(){
+  Route::get("/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
+  Route::get("/lexicon/{query}", [DashboardController::class, "lexicon_query_letter"])->name("lexicon_query_letter")->middleware('auth');
+  Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create')->middleware('auth');
+  Route::get("/display-lexicon-sense-create", [DashboardController::class, "display_sense_create"])->name('display-sense-create')->middleware('auth');
+  Route::get("/management/changelog", [DashboardController::class, "display_changelog"])->name('display-changelog')->middleware('auth');
+  Route::get("/management/users", [DashboardController::class, "display_users"])->name('display-users')->middleware('auth');
+});
 // Lexicon-specific routes within dashboard
 
 // Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
