@@ -12,7 +12,6 @@ use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-
 /**
  * Class User
  * 
@@ -33,6 +32,8 @@ class User extends Authenticatable
 	use LogsActivity; 
 	use \Illuminate\Notifications\Notifiable;
 	use LaratrustUserTrait;
+	use LogsActivity;
+
 	protected $table = 'users';
 
 	protected $dates = [

@@ -111,7 +111,7 @@
                 @permission('view-manage')
                 <li class="nav-header">MANAGEMENT</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('display-users') }}" class="nav-link">
                         <i class="nav-icon fas fa-address-book"></i>
                         <p>
                             Project Users
@@ -127,7 +127,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('dash')}}/management/rbac" class="nav-link">
+                    <a href="{{ route('display-changelog') }}" class="nav-link">
+                        <i class="nav-icon fas fa-address-book"></i>
+                        <p>
+                            View Changelog
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{config('laratrust.panel.path')}}" class="nav-link">
+                    {{-- <a href="{{route('dash')}}/management/rbac" class="nav-link"> --}}
                         {{-- <a href="/cdash/management/rbac" class="nav-link"> --}}
 
                     {{-- <a href="{!! route(config('laratrust.path')) !!}" class="nav-link"> --}}

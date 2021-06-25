@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Headword as Headword;
-
+use App\Models\User as User;
 use App\Models\Sense;
 use Illuminate\Support\Facades\DB;
-
 
 class DashboardController extends Controller
 {
@@ -60,9 +59,15 @@ class DashboardController extends Controller
         return view("dashboard.template.lexicon-create-sense");
     }
 
+    public function display_users(){
+
+        $users = User::paginate(15);
+        return view("dashboard.template.users", ["users"=>$users]);
+    }
+
     public function display_changelog(){
-        $updated = DB::table("activity_log")->where('description', '=', 'updated')->latest()->get();
-        $created = DB::table("activity_log")->where('description', '=', 'created')->latest()->get();
+        $updated = DB::table("activity_log")->where('description', '=', 'updated')->latest()->paginate(15);
+        $created = DB::table("activity_log")->where('description', '=', 'created')->latest()->paginate(15);
 
         return view("dashboard.template.changelog", ["updated"=>$updated, "created"=>$created]);
     }
