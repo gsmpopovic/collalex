@@ -2,7 +2,7 @@
 @section('content')
 <header>
     <div>
-        <h2>The Bantayanon Language Project</a></h2>
+        <h2>The Bantayanon Language Project</h2>
     </div>
     <div class="meta">
     </div>
