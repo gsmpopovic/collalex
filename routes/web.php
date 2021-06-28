@@ -55,18 +55,18 @@ Route::get("/", [WelcomeController::class, "index"]);
 
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
 
-  Route::prefix('/cdash')->group(['middleware' => ['auth', 'XSS']], function(){
+  Route::middleware(["auth"])->prefix('/cdash')->group(function(){
   Route::get("/lexicon", [DashboardController::class, "lexicon"])->name("lexicon");
   Route::get("/lexicon/{query}", [DashboardController::class, "lexicon_query_letter"])->name("lexicon_query_letter");
   Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create');
   Route::get("/display-lexicon-sense-create", [DashboardController::class, "display_sense_create"])->name('display-sense-create');
-  Route::get("/management/changelog", [DashboardController::class, "display_changelog"])->name('display-changelog');
-  Route::get("/management/users", [DashboardController::class, "display_users"])->name('display-users');
+  Route::get("/management/changelog", [DashboardController::class, "display_changelog"])->name('display-changelog')->middleware('role:administrator');
+  Route::get("/management/users", [DashboardController::class, "display_users"])->name('display-users')->middleware('role:administrator');
 });
 // Lexicon-specific routes within dashboard
 
 // Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
-Route::prefix('/cdash')->group(['middleware' => ['auth', 'XSS']], function(){
+Route::middleware(["auth", "XSS"])->prefix('/cdash')->group(function(){
 Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon");
 Route::get("/display-searchlexicon", [QueryLexiconController::class, "display_search"])->name("display-lexicon");
 Route::post("/validate-lexicon-entry", [QueryLexiconController::class, "validate_entry"])->name("validate-entry");
