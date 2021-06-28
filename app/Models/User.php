@@ -52,4 +52,10 @@ class User extends Authenticatable
 		'password',
 		'remember_token'
 	];
+
+	protected static $logAttributes = [		
+		'name',
+		'email',
+		'password',
+	];
 }
