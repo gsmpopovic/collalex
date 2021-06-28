@@ -54,25 +54,26 @@ Route::get("/", [WelcomeController::class, "index"]);
 // Dashboard routes
 
 Route::get("/cdash", [DashboardController::class, "index"])->name("dash")->middleware('auth');
-  Route::prefix('/cdash')->group(function(){
-  Route::get("/lexicon", [DashboardController::class, "lexicon"])->name("lexicon")->middleware('auth');
-  Route::get("/lexicon/{query}", [DashboardController::class, "lexicon_query_letter"])->name("lexicon_query_letter")->middleware('auth');
-  Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create')->middleware('auth');
-  Route::get("/display-lexicon-sense-create", [DashboardController::class, "display_sense_create"])->name('display-sense-create')->middleware('auth');
-  Route::get("/management/changelog", [DashboardController::class, "display_changelog"])->name('display-changelog')->middleware('auth');
-  Route::get("/management/users", [DashboardController::class, "display_users"])->name('display-users')->middleware('auth');
+
+  Route::prefix('/cdash')->group(['middleware' => ['auth', 'XSS']], function(){
+  Route::get("/lexicon", [DashboardController::class, "lexicon"])->name("lexicon");
+  Route::get("/lexicon/{query}", [DashboardController::class, "lexicon_query_letter"])->name("lexicon_query_letter");
+  Route::get("/display-lexicon-create", [DashboardController::class, "display_create"])->name('display-create');
+  Route::get("/display-lexicon-sense-create", [DashboardController::class, "display_sense_create"])->name('display-sense-create');
+  Route::get("/management/changelog", [DashboardController::class, "display_changelog"])->name('display-changelog');
+  Route::get("/management/users", [DashboardController::class, "display_users"])->name('display-users');
 });
 // Lexicon-specific routes within dashboard
 
 // Route::any("/query-lexicon-letters", [QueryLexiconController::class, "index"])->name("query-lexicon-letters")->middleware('auth');
-Route::prefix('/cdash')->group(function(){
-Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon")->middleware('auth');
-Route::get("/display-searchlexicon", [QueryLexiconController::class, "display_search"])->name("display-lexicon")->middleware('auth');
-Route::post("/validate-lexicon-entry", [QueryLexiconController::class, "validate_entry"])->name("validate-entry")->middleware('auth');
-Route::post("/create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry")->middleware('auth');
-Route::post("/update-lexicon-entry", [QueryLexiconController::class, "update_entry"])->name("update-entry")->middleware('auth');
-Route::post("/create-lexicon-sense-entry", [QueryLexiconController::class, "create_sense_entry"])->name("create-sense-entry")->middleware('auth');
-Route::post("/delete-sense-from-entry", [QueryLexiconController::class, "delete_sense"])->name("delete-sense-entry")->middleware('auth');
+Route::prefix('/cdash')->group(['middleware' => ['auth', 'XSS']], function(){
+Route::post("/search-lexicon", [QueryLexiconController::class, "search"])->name("search-lexicon");
+Route::get("/display-searchlexicon", [QueryLexiconController::class, "display_search"])->name("display-lexicon");
+Route::post("/validate-lexicon-entry", [QueryLexiconController::class, "validate_entry"])->name("validate-entry");
+Route::post("/create-lexicon-entry", [QueryLexiconController::class, "create_entry"])->name("create-entry");
+Route::post("/update-lexicon-entry", [QueryLexiconController::class, "update_entry"])->name("update-entry");
+Route::post("/create-lexicon-sense-entry", [QueryLexiconController::class, "create_sense_entry"])->name("create-sense-entry");
+Route::post("/delete-sense-from-entry", [QueryLexiconController::class, "delete_sense"])->name("delete-sense-entry");
 });
 
 // RBAC managed by Laratrust; edited from vendor package Laratrust.
