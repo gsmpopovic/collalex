@@ -7,4 +7,4 @@
 <link rel="stylesheet" href="{{asset('_assets/css/main.css')}}" />
 <!--[if lte IE 9]><link rel="stylesheet" href="_assets/css/ie9.css" /><![endif]-->
 <!--[if lte IE 8]><link rel="stylesheet" href="_assets/css/ie8.css" /><![endif]-->
-<link rel="icon" href="asset('_assets/images/icon_beach_withB.ico')">
+<link rel="icon" href="asset(ol_assets/images/icon_beach_withB.ico')">
