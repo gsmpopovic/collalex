@@ -3,7 +3,7 @@
 
     <h2>Created Entries</h2>
     <p> NB: "Attributes" in the "Created" table refers to the new columns:values of that entry. </p>
-    <table class="table-responsive-sm  table-bordered table-hover">
+    <table class="table-responsive table-bordered table-hover">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -66,7 +66,7 @@
     <h2>Updated Entries</h2>
     <p> NB: "Attributes" in the "Updated" table refers to the new, i.e., updated, columns:values of that entry. </p>
     <p> NB: "Old" refers to the columns:values of that entry prior to their being updated. </p>
-    <table class="table-responsive-sm  table-bordered table-hover">
+    <table class="table-responsive table-bordered table-hover">
         <thead>
             <tr>
                 <th scope="col">ID</th>
