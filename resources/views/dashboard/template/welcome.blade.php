@@ -8,7 +8,7 @@
     </div>
 </header>
 <div class="row">
-    <div class="6u 12u$(medium)">
+    <div class="blockquote">
         <p><sup><i class="icon fa-quote-left"></i></sup> Maayong adlaw! Garbo nakon nga ipahibawo sa
             inyo nga gihikay na sara ang usa ka diksyonaryo sa sinultian nga Bantayanon. Maayo gayud nga
             makahibawo kita anhon pagswat, pagsulti sa paningog nga Binantayanon pinaagi sini nga
@@ -22,7 +22,7 @@
                     class="icon fa-quote-right"></i></sup></p>
     </div>
 
-    <div class="6u 12u$(medium)">
+    <div class="blockquote">
         <p><sup><i class="icon fa-quote-left"></i></sup> <i>Welcome to the Bantayanon Language Project!
                 I am pleased to tell you that a Bantayanon Bisaya Language Project is now in the making
                 via this website. You'll get to know how Bantayanon words are written, spelled,
