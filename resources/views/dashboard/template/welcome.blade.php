@@ -1,8 +1,8 @@
 @extends('dashboard.template.master')
 @section('content')
 <header>
-    <div class="title">
-        <h2><a href="#">The Bantayanon Language Project</a></h2>
+    <div>
+        <h2>The Bantayanon Language Project</a></h2>
     </div>
     <div class="meta">
     </div>
