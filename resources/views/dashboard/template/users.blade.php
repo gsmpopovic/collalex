@@ -2,7 +2,7 @@
 @section('content')
 
 <h2>Current Project's Users</h2>
-<table class="table table-hover">
+<table class="table-responsive-sm table-hover">
     <thead>
       <tr>
         <th scope="col">ID</th>

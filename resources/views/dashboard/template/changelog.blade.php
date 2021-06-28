@@ -3,7 +3,7 @@
 
     <h2>Created Entries</h2>
     <p> NB: "Attributes" in the "Created" table refers to the new columns:values of that entry. </p>
-    <table class="table table-hover">
+    <table class="table-responsive-sm table-hover">
         <thead>
             <tr>
                 <th scope="col">ID</th>
